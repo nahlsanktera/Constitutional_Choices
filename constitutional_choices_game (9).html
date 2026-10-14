@@ -1,0 +1,3508 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Constitutional Choices — Langkah Kecil, Dampak Besar untuk Negara</title>
+  <style>
+    :root {
+      --sky-bg: #38bdf8;
+      --sky-deep: #0284c7;
+      --navy-dark: #0f172a;
+      --navy-card: #1e293b;
+      --gold-main: #fbbf24;
+      --gold-shadow: #b45309;
+      --red-pancasila: #ef4444;
+      --red-shadow: #991b1b;
+      --green-integrity: #10b981;
+      --green-shadow: #047857;
+      --parchment: #f8fafc;
+      --border-dark: #0f172a;
+      --accent-purple: #7e22ce;
+      --accent-indigo: #4f46e5;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Plus Jakarta Sans', 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+      image-rendering: pixelated;
+    }
+
+    body {
+      background: #0b1329;
+      color: var(--navy-dark);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 12px;
+    }
+
+    #app-container {
+      width: 100%;
+      max-width: 1180px;
+      background: #0284c7;
+      border: 5px solid var(--border-dark);
+      border-radius: 24px;
+      box-shadow: 0 16px 0 #090e1a, 0 30px 40px rgba(0,0,0,0.45);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+
+    /* TOP HEADER STRIP */
+    header {
+      background: #ffffff;
+      border-bottom: 4px solid var(--border-dark);
+      padding: 10px 18px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 20;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .brand-group {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .flag-pill {
+      display: flex;
+      flex-direction: column;
+      width: 24px;
+      height: 16px;
+      border: 2px solid var(--border-dark);
+      border-radius: 3px;
+      overflow: hidden;
+      box-shadow: 0 2px 0 var(--border-dark);
+      flex-shrink: 0;
+    }
+    .flag-r { background: var(--red-pancasila); flex: 1; }
+    .flag-w { background: #ffffff; flex: 1; }
+
+    .brand-group h1 {
+      font-size: 1.05rem;
+      font-weight: 900;
+      color: var(--navy-dark);
+      letter-spacing: 0.5px;
+      line-height: 1.1;
+    }
+
+    .brand-group p {
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: #64748b;
+    }
+
+    .header-buttons {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .btn-chunky {
+      border: 3px solid var(--border-dark);
+      border-radius: 12px;
+      padding: 7px 14px;
+      font-size: 0.8rem;
+      font-weight: 900;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      user-select: none;
+      transition: transform 0.08s, box-shadow 0.08s;
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
+      box-shadow: 0 4px 0 var(--border-dark);
+    }
+
+    .btn-chunky:hover:not(:disabled) {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 0 var(--border-dark);
+    }
+
+    .btn-chunky:active:not(:disabled) {
+      transform: translateY(3px);
+      box-shadow: 0 1px 0 var(--border-dark);
+    }
+
+    .btn-chunky:disabled {
+      background: #cbd5e1 !important;
+      color: #64748b !important;
+      border-color: #64748b !important;
+      box-shadow: 0 2px 0 #64748b !important;
+      cursor: not-allowed;
+      transform: none !important;
+    }
+
+    .btn-gold { background: var(--gold-main); color: var(--navy-dark); }
+    .btn-sky { background: #38bdf8; color: var(--navy-dark); }
+    .btn-white { background: #ffffff; color: var(--navy-dark); }
+    .btn-danger { background: var(--red-pancasila); color: #ffffff; }
+
+    /* ANIMASI IDLE & EKSPRESI */
+    @keyframes pawnIdleFloat {
+      0%, 100% { transform: translate(-50%, -70%) translateY(0); }
+      50% { transform: translate(-50%, -70%) translateY(-5px); }
+    }
+
+    @keyframes pawnTremble {
+      0%, 100% { transform: translate(-50%, -70%) rotate(0deg); }
+      25% { transform: translate(-51%, -72%) rotate(-2deg); }
+      75% { transform: translate(-49%, -68%) rotate(2deg); }
+    }
+
+    @keyframes sweatDrip {
+      0% { transform: translateY(0) scale(0.85); opacity: 0.8; }
+      100% { transform: translateY(4px) scale(1.2); opacity: 1; }
+    }
+
+    @keyframes hudAvatarPulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+    }
+
+    /* MAIN MENU VIEW */
+    #main-menu-view {
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      background: radial-gradient(circle at 50% 15%, #bae6fd 0%, #38bdf8 50%, #0284c7 100%);
+      overflow: hidden;
+      min-height: 580px;
+    }
+
+    .sky-cloud {
+      position: absolute;
+      background: #ffffff;
+      border: 3px solid var(--border-dark);
+      border-radius: 18px;
+      box-shadow: 0 5px 0 rgba(15, 23, 42, 0.2);
+      pointer-events: none;
+    }
+    .cloud-1 { top: 22px; left: 30px; width: 130px; height: 34px; }
+    .cloud-2 { top: 40px; right: 100px; width: 160px; height: 40px; }
+    .cloud-3 { top: 110px; left: 280px; width: 90px; height: 26px; opacity: 0.85; }
+
+    .menu-stage-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.95fr;
+      padding: 24px 32px 36px 32px;
+      gap: 24px;
+      align-items: center;
+      z-index: 10;
+    }
+
+    @media (max-width: 860px) {
+      .menu-stage-grid { grid-template-columns: 1fr; padding: 16px; gap: 18px; }
+    }
+
+    .menu-hero-showcase {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 10px;
+      width: 100%;
+    }
+
+    .game-title-text {
+      font-family: 'Impact', 'Trebuchet MS', sans-serif;
+      font-size: clamp(2rem, 6.5vw, 3.2rem);
+      font-weight: 900;
+      line-height: 0.95;
+      color: #fef08a;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      -webkit-text-stroke: 2.5px var(--border-dark);
+      text-shadow: 0 4px 0 var(--gold-shadow), 0 7px 0 var(--border-dark);
+      word-break: break-word;
+      max-width: 100%;
+    }
+
+    .game-subtitle-ribbon {
+      margin-top: 2px;
+      background: var(--red-pancasila);
+      border: 3px solid var(--border-dark);
+      border-radius: 10px;
+      padding: 6px 14px;
+      color: #ffffff;
+      font-size: 0.88rem;
+      font-weight: 800;
+      box-shadow: 0 4px 0 var(--red-shadow), 0 5px 0 var(--border-dark);
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .civic-diorama-frame {
+      width: 100%;
+      height: 185px;
+      background: #bae6fd;
+      border: 4px solid var(--border-dark);
+      border-radius: 16px;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 6px 0 var(--border-dark);
+      display: flex;
+      align-items: flex-end;
+      padding: 0 16px;
+      margin-top: 6px;
+    }
+
+    .diorama-hills {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 48px;
+      background: #15803d;
+      border-top: 4px solid var(--border-dark);
+      display: flex;
+      justify-content: space-around;
+      align-items: flex-end;
+    }
+
+    .diorama-landmark-mk {
+      position: absolute;
+      bottom: 40px;
+      left: 32px;
+      width: 125px;
+      height: 85px;
+      background: #f1f5f9;
+      border: 3px solid var(--border-dark);
+      border-radius: 4px 4px 0 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      box-shadow: 0 4px 0 #94a3b8;
+    }
+    .mk-pediment {
+      width: 135px;
+      height: 0;
+      border-left: 68px solid transparent;
+      border-right: 68px solid transparent;
+      border-bottom: 22px solid #dc2626;
+      margin-top: -22px;
+      filter: drop-shadow(0 2px 0 var(--border-dark));
+    }
+    .mk-pillars {
+      display: flex;
+      width: 100%;
+      justify-content: space-evenly;
+      flex: 1;
+      padding-top: 6px;
+    }
+    .mk-col {
+      width: 6px;
+      height: 100%;
+      background: #cbd5e1;
+      border-left: 2px solid var(--border-dark);
+      border-right: 2px solid var(--border-dark);
+    }
+
+    .diorama-characters {
+      position: absolute;
+      bottom: 44px;
+      right: 32px;
+      display: flex;
+      gap: 16px;
+      align-items: flex-end;
+    }
+
+    .pawn-pixel-actor {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      filter: drop-shadow(0 4px 0 var(--border-dark));
+    }
+    .actor-bubble {
+      background: #ffffff;
+      border: 2px solid var(--border-dark);
+      border-radius: 8px;
+      padding: 2px 6px;
+      font-size: 0.65rem;
+      font-weight: 800;
+      color: var(--navy-dark);
+      margin-bottom: 4px;
+      position: relative;
+      white-space: nowrap;
+    }
+    .actor-bubble::after {
+      content: "";
+      position: absolute;
+      bottom: -5px;
+      left: 50%;
+      transform: translateX(-50%);
+      border-width: 5px 4px 0;
+      border-style: solid;
+      border-color: #ffffff transparent;
+      display: block;
+      width: 0;
+    }
+
+    .menu-action-deck {
+      background: #ffffff;
+      border: 4px solid var(--border-dark);
+      border-radius: 20px;
+      padding: 20px;
+      box-shadow: 0 10px 0 var(--border-dark);
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .deck-section-title {
+      font-size: 0.74rem;
+      font-weight: 900;
+      color: #64748b;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .diff-tray {
+      background: #f1f5f9;
+      border: 2px solid var(--border-dark);
+      border-radius: 10px;
+      padding: 5px;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 6px;
+    }
+
+    .diff-chip {
+      background: #ffffff;
+      border: 2px solid #cbd5e1;
+      padding: 6px 2px;
+      border-radius: 8px;
+      font-size: 0.72rem;
+      font-weight: 800;
+      color: #64748b;
+      cursor: pointer;
+      text-align: center;
+      transition: all 0.12s;
+    }
+    .diff-chip.active-diff {
+      background: var(--green-integrity);
+      color: #ffffff;
+      border-color: var(--border-dark);
+      box-shadow: 0 3px 0 var(--green-shadow);
+      transform: translateY(-2px);
+    }
+
+    .aux-btn-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-top: 4px;
+    }
+
+    /* CHARACTER SELECTION */
+    #char-select-view {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      padding: 24px 20px;
+      background: radial-gradient(circle at 50% 20%, #7dd3fc 0%, #0284c7 100%);
+      flex: 1;
+      overflow-y: auto;
+    }
+
+    .char-badge-step {
+      background: #fef08a;
+      color: #78350f;
+      font-size: 0.72rem;
+      font-weight: 900;
+      letter-spacing: 0.8px;
+      padding: 5px 14px;
+      border-radius: 8px;
+      border: 2.5px solid var(--border-dark);
+      box-shadow: 0 3px 0 var(--border-dark);
+      margin-bottom: 8px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      text-transform: uppercase;
+    }
+
+    .char-cards-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+      width: 100%;
+      max-width: 960px;
+      margin-bottom: 20px;
+    }
+
+    @media (max-width: 840px) { .char-cards-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 480px) { .char-cards-grid { grid-template-columns: 1fr; } }
+
+    .char-card {
+      background: #ffffff;
+      border: 3px solid var(--border-dark);
+      border-radius: 16px;
+      padding: 14px 10px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      cursor: pointer;
+      transition: all 0.15s;
+      box-shadow: 0 6px 0 var(--border-dark);
+      text-align: center;
+      position: relative;
+    }
+
+    .char-card:hover { transform: translateY(-3px); box-shadow: 0 9px 0 var(--border-dark); }
+    .char-card.selected {
+      background: #fef08a;
+      border-color: var(--border-dark);
+      box-shadow: 0 0 0 3px #facc15, 0 8px 0 var(--border-dark);
+      transform: translateY(-4px);
+    }
+
+    .char-avatar-box {
+      width: 92px;
+      height: 104px;
+      border-radius: 14px;
+      border: 3px solid var(--border-dark);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 10px;
+      overflow: hidden;
+      background: #bae6fd;
+      box-shadow: 0 3px 0 var(--border-dark);
+      padding: 4px;
+    }
+
+    .char-avatar-box svg,
+    .char-avatar-box img,
+    .pawn-avatar-box svg,
+    .pawn-avatar-box img,
+    .hud-avatar-frame svg,
+    .hud-avatar-frame img,
+    .cert-char-avatar-frame svg,
+    .cert-char-avatar-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      image-rendering: pixelated;
+    }
+
+    .char-custom-upload-bar {
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: #ffffff;
+      padding: 8px 16px;
+      border-radius: 12px;
+      border: 2px dashed var(--border-dark);
+      font-size: 0.8rem;
+      font-weight: 700;
+      box-shadow: 0 4px 0 var(--border-dark);
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    /* GAMEPLAY BOARD */
+    #game-layout {
+      display: none;
+      grid-template-columns: 1fr 310px;
+      background: #38bdf8;
+      flex: 1;
+      position: relative;
+      overflow: hidden;
+    }
+
+    @media (max-width: 920px) {
+      #game-layout { grid-template-columns: 1fr; }
+    }
+
+    .board-stage-area {
+      padding: 14px;
+      display: flex;
+      flex-direction: column;
+      background: #7dd3fc;
+      border-right: 4px solid var(--border-dark);
+      overflow-y: auto;
+    }
+
+    .board-header-strip {
+      background: #ffffff;
+      border: 3px solid var(--border-dark);
+      border-radius: 12px;
+      padding: 8px 14px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+      box-shadow: 0 4px 0 var(--border-dark);
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .board-title-badge {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.85rem;
+      font-weight: 900;
+      color: var(--navy-dark);
+    }
+
+    .grid-path-50 {
+      display: grid;
+      grid-template-columns: repeat(10, 1fr);
+      gap: 6px;
+      width: 100%;
+      background: #0284c7;
+      border: 4px solid var(--border-dark);
+      border-radius: 16px;
+      padding: 10px;
+      box-shadow: inset 0 4px 10px rgba(0,0,0,0.25), 0 6px 0 var(--border-dark);
+      flex: 1;
+    }
+
+    .board-tile {
+      aspect-ratio: 1;
+      border-radius: 8px;
+      border: 2px solid var(--border-dark);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+      padding: 3px;
+      font-size: 0.6rem;
+      font-weight: 900;
+      position: relative;
+      user-select: none;
+      box-shadow: 0 3px 0 var(--border-dark);
+      cursor: pointer;
+      transition: transform 0.08s;
+    }
+
+    .board-tile:hover {
+      transform: scale(1.04);
+      z-index: 10;
+    }
+
+    .board-tile .t-num { align-self: flex-start; font-size: 0.58rem; line-height: 1; }
+    .board-tile .t-ico { font-size: 1.15rem; line-height: 1; margin: auto 0; }
+    .board-tile .t-lbl {
+      font-size: 0.48rem;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      width: 100%;
+      text-align: center;
+      letter-spacing: -0.2px;
+    }
+
+    .tile-style-start { background: #86efac; color: #064e3b; border-color: #064e3b; }
+    .tile-style-finish { background: #f43f5e; color: #ffffff; border-color: #881337; }
+    .tile-style-case { background: #93c5fd; color: #1e3a8a; }
+    .tile-style-knowledge { background: #5eead4; color: #115e59; }
+    .tile-style-dialog { background: #c7d2fe; color: #312e81; }
+    .tile-style-quiz { background: #fde047; color: #78350f; }
+    .tile-style-trap { background: #fb923c; color: #7c2d12; }
+    .tile-style-boost { background: #38bdf8; color: #0369a1; }
+    .tile-style-gate25 {
+      background: #c084fc;
+      color: #581c87;
+      box-shadow: 0 0 0 2px #fde047, 0 4px 0 var(--border-dark);
+      transform: scale(1.03);
+      z-index: 5;
+    }
+
+    /* STANDING PAWN */
+    .mock-pawn-standee {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -70%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      z-index: 25;
+      pointer-events: none;
+      filter: drop-shadow(0 4px 0 var(--border-dark));
+      transition: all 0.25s ease-out;
+      animation: pawnIdleFloat 2s ease-in-out infinite;
+    }
+
+    .pawn-offset-l { left: 35% !important; }
+    .pawn-offset-r { left: 65% !important; }
+    .pawn-nervous-tremble { animation: pawnTremble 0.25s ease-in-out infinite !important; }
+
+    .pawn-sweat-emote {
+      position: absolute;
+      top: -14px;
+      right: -8px;
+      font-size: 1rem;
+      animation: sweatDrip 0.75s ease-in-out infinite alternate;
+      filter: drop-shadow(0 2px 0 rgba(0,0,0,0.5));
+      z-index: 30;
+      pointer-events: none;
+    }
+
+    .pawn-tag-bubble {
+      background: #facc15;
+      border: 1.5px solid var(--border-dark);
+      color: var(--navy-dark);
+      font-size: 0.52rem;
+      font-weight: 900;
+      padding: 1px 5px;
+      border-radius: 4px;
+      white-space: nowrap;
+      margin-bottom: 1px;
+    }
+    .pawn-avatar-box {
+      width: 32px;
+      height: 38px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .pawn-p2 .pawn-tag-bubble { background: var(--red-pancasila); color: #ffffff; }
+
+    /* HUD SIDEBAR */
+    .hud-control-column {
+      background: #f8fafc;
+      padding: 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      overflow-y: auto;
+    }
+
+    .player-card-hud {
+      background: #ffffff;
+      border: 3px solid var(--border-dark);
+      border-radius: 14px;
+      padding: 12px;
+      box-shadow: 0 5px 0 var(--border-dark);
+    }
+
+    .hud-profile-row {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+    .hud-avatar-frame {
+      width: 48px;
+      height: 54px;
+      background: #e0f2fe;
+      border: 2px solid var(--border-dark);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      padding: 2px;
+      position: relative;
+      animation: hudAvatarPulse 3s ease-in-out infinite;
+    }
+
+    .hud-expression-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 0.65rem;
+      font-weight: 800;
+      padding: 2px 7px;
+      border-radius: 6px;
+      border: 1.5px solid var(--border-dark);
+      margin-top: 4px;
+      transition: all 0.2s ease;
+    }
+    .mood-calm { background: #dcfce7; color: #166534; }
+    .mood-nervous { background: #fee2e2; color: #991b1b; }
+
+    .score-meter-box {
+      background: #f1f5f9;
+      border: 2px solid var(--border-dark);
+      border-radius: 10px;
+      padding: 8px 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .score-num {
+      font-size: 1.5rem;
+      font-weight: 900;
+      color: var(--gold-shadow);
+      line-height: 1;
+    }
+
+    /* DADU KARAKTER */
+    .dice-chunky-widget {
+      background: #ffffff;
+      border: 3px solid var(--border-dark);
+      border-radius: 14px;
+      padding: 14px;
+      box-shadow: 0 5px 0 var(--border-dark);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .dice-cube-visual {
+      width: 68px;
+      height: 68px;
+      background: #ffffff;
+      border: 3.5px solid var(--border-dark);
+      border-radius: 16px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 2.6rem;
+      font-weight: 900;
+      line-height: 1;
+      user-select: none;
+      transition: all 0.15s ease;
+    }
+
+    .turn-status-banner {
+      background: #fef08a;
+      border: 2px solid var(--border-dark);
+      border-radius: 8px;
+      padding: 6px;
+      text-align: center;
+      font-size: 0.76rem;
+      font-weight: 900;
+      box-shadow: 0 3px 0 var(--border-dark);
+    }
+
+    /* MODAL BASE */
+    .modal-backdrop {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(15, 23, 42, 0.75);
+      backdrop-filter: blur(4px);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 100;
+      padding: 16px;
+    }
+
+    .modal-card-chunky {
+      background: #ffffff;
+      border: 4px solid var(--border-dark);
+      border-radius: 20px;
+      max-width: 600px;
+      width: 100%;
+      padding: 22px;
+      box-shadow: 0 12px 0 var(--border-dark);
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      max-height: 90vh;
+      overflow-y: auto;
+      position: relative;
+    }
+
+    .modal-header-ribbon {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 2px solid #e2e8f0;
+      padding-bottom: 8px;
+    }
+
+    .modal-title-tag {
+      font-size: 0.85rem;
+      font-weight: 900;
+      color: var(--navy-dark);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .option-btn-box {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-top: 6px;
+    }
+
+    .btn-quiz-option {
+      background: #f8fafc;
+      border: 2.5px solid var(--border-dark);
+      border-radius: 12px;
+      padding: 10px 12px;
+      text-align: left;
+      font-size: 0.82rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      box-shadow: 0 3px 0 var(--border-dark);
+      transition: all 0.1s;
+      line-height: 1.35;
+    }
+
+    .btn-quiz-option:hover:not(:disabled) {
+      background: #fef08a;
+      transform: translateY(-2px);
+      box-shadow: 0 5px 0 var(--border-dark);
+    }
+
+    .option-key-badge {
+      background: #e2e8f0;
+      border: 1.5px solid var(--border-dark);
+      border-radius: 6px;
+      padding: 1px 6px;
+      font-size: 0.72rem;
+      font-weight: 900;
+      flex-shrink: 0;
+    }
+
+    /* STORY MODALS */
+    .story-bubble-narrative {
+      background: #eff6ff;
+      border: 2.5px solid #3b82f6;
+      border-radius: 14px;
+      padding: 14px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: #1e3a8a;
+      line-height: 1.55;
+    }
+
+    .story-reflection-box {
+      background: #f8fafc;
+      border: 2px solid var(--border-dark);
+      border-radius: 10px;
+      padding: 10px;
+      font-size: 0.78rem;
+      color: #334155;
+      line-height: 1.45;
+    }
+
+    /* SERTIFIKAT */
+    .cert-modal-box {
+      background: #ffffff;
+      border: 4px solid var(--border-dark);
+      border-radius: 20px;
+      max-width: 680px;
+      width: 100%;
+      padding: 24px;
+      box-shadow: 0 16px 0 var(--border-dark);
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      max-height: 92vh;
+      overflow-y: auto;
+    }
+
+    .cert-simple-paper {
+      background: #ffffff;
+      border: 3px solid var(--border-dark);
+      border-radius: 14px;
+      padding: 26px 22px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      position: relative;
+      box-shadow: inset 0 0 0 4px #f8fafc, 0 4px 0 rgba(0,0,0,0.06);
+    }
+
+    .cert-header-clean {
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .cert-tag-sub {
+      background: #fef08a;
+      border: 2px solid var(--border-dark);
+      color: #78350f;
+      font-size: 0.7rem;
+      font-weight: 900;
+      letter-spacing: 1px;
+      padding: 3px 12px;
+      border-radius: 6px;
+      text-transform: uppercase;
+      box-shadow: 0 2px 0 var(--border-dark);
+    }
+
+    .cert-title-clean {
+      font-family: 'Impact', 'Trebuchet MS', sans-serif;
+      font-size: 2.1rem;
+      font-weight: 900;
+      color: var(--navy-dark);
+      letter-spacing: 1.5px;
+      line-height: 1.1;
+      margin-top: 4px;
+    }
+
+    .cert-subtitle-clean {
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: #64748b;
+    }
+
+    .cert-divider-line {
+      height: 3px;
+      background: var(--border-dark);
+      border-radius: 2px;
+      width: 100%;
+    }
+
+    .cert-recipient-section {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      background: #f8fafc;
+      border: 2px solid var(--border-dark);
+      border-radius: 12px;
+      padding: 12px 16px;
+    }
+
+    .cert-char-avatar-frame {
+      width: 64px;
+      height: 72px;
+      background: #bae6fd;
+      border: 2.5px solid var(--border-dark);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 3px;
+      flex-shrink: 0;
+      box-shadow: 0 3px 0 var(--border-dark);
+    }
+
+    .cert-recipient-info {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .cert-label-small {
+      font-size: 0.68rem;
+      font-weight: 800;
+      color: #64748b;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .cert-recipient-name {
+      font-size: 1.45rem;
+      font-weight: 900;
+      color: var(--navy-dark);
+      line-height: 1.1;
+    }
+
+    .cert-recipient-role {
+      font-size: 0.82rem;
+      font-weight: 800;
+      color: #0284c7;
+    }
+
+    .cert-body-narrative {
+      font-size: 0.84rem;
+      font-weight: 600;
+      color: #1e293b;
+      line-height: 1.55;
+      text-align: justify;
+      background: #ffffff;
+      border-left: 4px solid var(--gold-main);
+      padding: 8px 12px;
+    }
+
+    .cert-stats-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+    }
+
+    .cert-stat-item {
+      background: #f1f5f9;
+      border: 1.5px solid var(--border-dark);
+      border-radius: 8px;
+      padding: 6px 8px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .cert-stat-label { font-size: 0.62rem; font-weight: 800; color: #64748b; }
+    .cert-stat-val { font-size: 0.95rem; font-weight: 900; color: var(--navy-dark); }
+
+    .cert-footer-simple {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      border-top: 1.5px dashed #cbd5e1;
+      padding-top: 12px;
+      gap: 10px;
+    }
+
+    .cert-foot-col { display: flex; flex-direction: column; gap: 2px; }
+    .cert-foot-date { font-size: 0.78rem; font-weight: 800; color: var(--navy-dark); }
+    .cert-sign-name { font-size: 0.82rem; font-weight: 900; color: var(--navy-dark); }
+    .cert-foot-sub { font-size: 0.65rem; font-weight: 700; color: #64748b; }
+
+    .cert-stamp-badge {
+      border: 2.5px solid var(--green-integrity);
+      color: var(--green-integrity);
+      padding: 6px 14px;
+      border-radius: 8px;
+      text-align: center;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      line-height: 1;
+      font-weight: 900;
+      font-size: 0.82rem;
+      letter-spacing: 1px;
+      transform: rotate(-3deg);
+      box-shadow: 0 2px 0 rgba(16, 185, 129, 0.2);
+    }
+
+    .cert-action-bar {
+      display: flex;
+      gap: 10px;
+      justify-content: flex-end;
+      flex-wrap: wrap;
+    }
+
+    @media print {
+      body * { visibility: hidden; }
+      #printable-certificate, #printable-certificate * { visibility: visible; }
+      #printable-certificate {
+        position: absolute;
+        left: 0; top: 0;
+        width: 100%;
+        border: none;
+        box-shadow: none;
+      }
+      .no-print { display: none !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="app-container">
+    <!-- HEADER -->
+    <header>
+      <div class="brand-group">
+        <div class="flag-pill">
+          <div class="flag-r"></div>
+          <div class="flag-w"></div>
+        </div>
+        <div>
+          <h1>CONSTITUTIONAL CHOICES</h1>
+          <p>Langkah Kecil, Dampak Besar untuk Negara</p>
+        </div>
+      </div>
+      <div class="header-buttons">
+        <button class="btn-chunky btn-white" id="btn-sound-toggle" onclick="toggleAudio()">
+          <span id="sound-icon">🎵</span> <span id="sound-text">MUSIK: NYALA</span>
+        </button>
+        <button class="btn-chunky btn-white" onclick="openInstructionsModal()">📖 PANDUAN</button>
+        <button class="btn-chunky btn-danger" onclick="requestExitGame()">🚪 KELUAR</button>
+      </div>
+    </header>
+
+    <!-- 1. MAIN MENU VIEW -->
+    <div id="main-menu-view">
+      <div class="sky-cloud cloud-1"></div>
+      <div class="sky-cloud cloud-2"></div>
+      <div class="sky-cloud cloud-3"></div>
+
+      <div class="menu-stage-grid">
+        <div class="menu-hero-showcase">
+          <h1 class="game-title-text">CONSTITUTIONAL<br>CHOICES</h1>
+          <div class="game-subtitle-ribbon">
+            <span>🇮🇩</span>
+            <span>Langkah Kecil, Dampak Besar untuk Negara</span>
+          </div>
+
+          <div class="civic-diorama-frame">
+            <div class="diorama-landmark-mk">
+              <div class="mk-pediment"></div>
+              <div class="mk-pillars">
+                <div class="mk-col"></div>
+                <div class="mk-col"></div>
+                <div class="mk-col"></div>
+                <div class="mk-col"></div>
+              </div>
+            </div>
+            <div class="diorama-hills">
+              <span style="font-size: 1.1rem;">🌳</span>
+              <span style="font-size: 1.3rem;">🏛️</span>
+              <span style="font-size: 1.1rem;">🌳</span>
+            </div>
+            <div class="diorama-characters">
+              <div class="pawn-pixel-actor">
+                <div class="actor-bubble">Ayo berdialog!</div>
+                <div style="width: 32px; height: 38px;" id="diorama-actor-kirana"></div>
+              </div>
+              <div class="pawn-pixel-actor">
+                <div class="actor-bubble">Taat hukum!</div>
+                <div style="width: 32px; height: 38px;" id="diorama-actor-arya"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="menu-action-deck">
+          <div>
+            <div class="deck-section-title">
+              <span>TINGKAT KESULITAN:</span>
+              <span id="diff-selected-label" style="color:#10b981;">MEDIUM</span>
+            </div>
+            <div class="diff-tray">
+              <div class="diff-chip" onclick="setGameDifficulty('easy')">EASY</div>
+              <div class="diff-chip active-diff" onclick="setGameDifficulty('medium')">MEDIUM</div>
+              <div class="diff-chip" onclick="setGameDifficulty('hard')">HARD</div>
+              <div class="diff-chip" onclick="setGameDifficulty('extreme')">EXTREME</div>
+            </div>
+          </div>
+
+          <button class="btn-chunky btn-gold" style="padding: 12px; font-size: 0.92rem;" onclick="startCharacterSelection('solo')">
+            <span>👤</span> <span>MAIN SOLO (1 PEMAIN)</span>
+          </button>
+          <button class="btn-chunky btn-sky" style="padding: 12px; font-size: 0.92rem;" onclick="startCharacterSelection('duel')">
+            <span>⚔️</span> <span>MODE DUEL (2 PEMAIN)</span>
+          </button>
+
+          <div class="aux-btn-row">
+            <button class="btn-chunky btn-white" onclick="openAboutModal()">ℹ️ TENTANG</button>
+            <button class="btn-chunky btn-white" onclick="openCreditModal()">🎖️ KREDIT</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2. CHARACTER SELECTION VIEW -->
+    <div id="char-select-view">
+      <div class="char-badge-step" id="char-selection-turn-badge">PILIH KARAKTER (PEMAIN 1)</div>
+      <h2 style="font-size: 1.3rem; font-weight: 900; color: #ffffff; text-shadow: 0 2px 0 var(--border-dark); margin-bottom: 12px;">
+        PILIH IDENTITAS PERJUANGANMU
+      </h2>
+
+      <div class="char-custom-upload-bar">
+        <span>🎨 Gunakan Sprite Sendiri:</span>
+        <input type="file" id="custom-char-upload" accept="image/*" style="font-size: 0.72rem;">
+      </div>
+
+      <div class="char-cards-grid" id="char-cards-container"></div>
+
+      <div style="display: flex; gap: 12px;">
+        <button class="btn-chunky btn-white" onclick="backToMainMenu()">Batal</button>
+        <button class="btn-chunky btn-gold" id="btn-confirm-char" onclick="confirmCharacterSelection()">Lanjut ke Papan Permainan ➔</button>
+      </div>
+    </div>
+
+    <!-- 3. GAMEPLAY BOARD LAYOUT -->
+    <div id="game-layout">
+      <!-- Papan 50 Petak -->
+      <div class="board-stage-area">
+        <div class="board-header-strip">
+          <div class="board-title-badge">
+            <span>🧭</span>
+            <span>JALUR 50 PETAK DEMOKRASI KAMPUS</span>
+          </div>
+          <div style="display: flex; gap: 6px; align-items: center;">
+            <div id="badge-game-mode-display" class="diff-chip active-diff" style="cursor: default;">MODE SOLO</div>
+            <button class="btn-chunky btn-white" style="padding: 4px 8px; font-size: 0.7rem;" onclick="backToMainMenu()">MENU UTAMA</button>
+          </div>
+        </div>
+
+        <div class="grid-path-50" id="board-grid-50"></div>
+      </div>
+
+      <!-- HUD Sidebar -->
+      <div class="hud-control-column">
+        <div class="turn-status-banner" id="hud-turn-banner">GILIRAN PEMAIN 1</div>
+
+        <!-- Profil Pemain 1 -->
+        <div class="player-card-hud" id="hud-card-p1">
+          <div class="hud-profile-row">
+            <div class="hud-avatar-frame" id="hud-avatar-p1"></div>
+            <div>
+              <h3 id="hud-name-p1" style="font-size: 0.92rem; font-weight: 900;">Kirana</h3>
+              <span id="hud-role-p1" style="font-size: 0.72rem; font-weight: 700; color: #ef4444;">Aktivis Kampus</span>
+              <div>
+                <span class="hud-expression-badge mood-calm" id="hud-mood-p1">😊 Siaga & Tenang</span>
+              </div>
+            </div>
+          </div>
+          <div class="score-meter-box">
+            <span style="font-size: 0.72rem; font-weight: 800; color:#64748b;">INTEGRITAS:</span>
+            <span class="score-num" id="hud-score-p1">0 PTS</span>
+          </div>
+        </div>
+
+        <!-- Profil Pemain 2 -->
+        <div class="player-card-hud" id="hud-card-p2" style="display: none;">
+          <div class="hud-profile-row">
+            <div class="hud-avatar-frame" id="hud-avatar-p2"></div>
+            <div>
+              <h3 id="hud-name-p2" style="font-size: 0.92rem; font-weight: 900;">Arya</h3>
+              <span id="hud-role-p2" style="font-size: 0.72rem; font-weight: 700; color: #2563eb;">Taat Hukum</span>
+              <div>
+                <span class="hud-expression-badge mood-calm" id="hud-mood-p2">😊 Siaga & Tenang</span>
+              </div>
+            </div>
+          </div>
+          <div class="score-meter-box">
+            <span style="font-size: 0.72rem; font-weight: 800; color:#64748b;">INTEGRITAS:</span>
+            <span class="score-num" id="hud-score-p2">0 PTS</span>
+          </div>
+        </div>
+
+        <!-- Dadu Berwarna Karakter -->
+        <div class="dice-chunky-widget">
+          <div style="font-size: 0.72rem; font-weight: 800; color:#64748b;">DADU KELANGKAHAN</div>
+          <div class="dice-cube-visual" id="dice-cube" style="color: #ef4444;">1</div>
+          <button class="btn-chunky btn-gold" id="btn-roll-dice" style="width: 100%; padding: 10px;" onclick="handleRollDice()">
+            🎲 LEMPAR DADU
+          </button>
+        </div>
+
+        <!-- Log Perjalanan -->
+        <div style="background: #ffffff; border: 2.5px solid var(--border-dark); border-radius: 12px; padding: 10px; box-shadow: 0 4px 0 var(--border-dark); flex: 1;">
+          <div style="font-size: 0.72rem; font-weight: 900; color: #64748b; margin-bottom: 4px;">CATATAN PERJALANAN:</div>
+          <div id="gameplay-log-box" style="font-size: 0.74rem; font-weight: 600; color: #334155; line-height: 1.35; max-height: 90px; overflow-y: auto;">
+            Pemain siap di Petak 1 (Gapura Kampus).
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL EVENT PETAK (KASUS / KUIS / DIALOG / WAWASAN) -->
+  <div id="event-action-modal" class="modal-backdrop">
+    <div class="modal-card-chunky">
+      <div class="modal-header-ribbon">
+        <span class="modal-title-tag" id="modal-event-tag">⚖️ TANTANGAN KONSTITUSI</span>
+        <span id="modal-tile-badge" class="diff-chip active-diff" style="cursor: default;">PETAK 4</span>
+      </div>
+      <div>
+        <h3 id="modal-event-title" style="font-size: 1rem; font-weight: 900; color: var(--navy-dark); margin-bottom: 4px;">Judul Kasus</h3>
+        <p id="modal-event-desc" style="font-size: 0.8rem; font-weight: 600; color: #475569; line-height: 1.4;">Deskripsi situasi kasus...</p>
+      </div>
+
+      <div class="option-btn-box" id="modal-options-container"></div>
+
+      <div id="modal-feedback-box" style="display: none; background: #eff6ff; border: 2px solid #3b82f6; border-radius: 12px; padding: 10px; font-size: 0.78rem; line-height: 1.4;"></div>
+
+      <div style="display: flex; justify-content: flex-end; gap: 8px; margin-top: 4px;">
+        <button class="btn-chunky btn-gold" id="btn-modal-action-confirm" style="display: none;" onclick="closeEventActionModal()">LANJUTKAN</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL GERBANG SIDANG 25 (MARATON 5 SOAL) -->
+  <div id="exam25-modal" class="modal-backdrop">
+    <div class="modal-card-chunky" style="border-color: #581c87;">
+      <div class="modal-header-ribbon">
+        <span class="modal-title-tag" style="color: #7e22ce;">⚡ GERBANG SIDANG UJIAN MARATON (PETAK 25)</span>
+        <span id="exam25-step-badge" class="diff-chip active-diff" style="background: #7e22ce;">SOAL 1 DARI 5</span>
+      </div>
+      <p id="exam25-penalty-text" style="font-size: 0.78rem; color: #dc2626; font-weight: 800;">
+        ⚠️ Sanksi Ketat: Gagal 1 soal akan memulangkanmu ke petak sebelumnya!
+      </p>
+      <div>
+        <h4 id="exam25-question-text" style="font-size: 0.95rem; font-weight: 900; line-height: 1.35; margin-bottom: 6px;">Pertanyaan Ujian...</h4>
+      </div>
+      <div class="option-btn-box" id="exam25-options-box"></div>
+    </div>
+  </div>
+
+  <!-- MODAL SIDANG PLENO MAHKAMAH KONSTITUSI 50 (10 SOAL) -->
+  <div id="final-court-modal" class="modal-backdrop">
+    <div class="modal-card-chunky" style="border-color: #991b1b; max-width: 640px;">
+      <div class="modal-header-ribbon">
+        <span class="modal-title-tag" style="color: #dc2626;">🏛️ SIDANG PLENO MAHKAMAH KONSTITUSI (PETAK 50)</span>
+        <span id="court-step-badge" class="diff-chip active-diff" style="background: #dc2626;">SOAL 1/10</span>
+      </div>
+      <div id="final-court-penalty-text" style="background: #fee2e2; border: 1.5px solid #ef4444; border-radius: 8px; padding: 6px 10px; font-size: 0.74rem; font-weight: 800; color: #991b1b;">
+        ⚖️ Ujian Terakhir: 10 Soal bertingkat (3 Gampang, 4 Sedang, 3 Sangat Sukar).
+      </div>
+      <div>
+        <h4 id="court-question-text" style="font-size: 0.95rem; font-weight: 900; line-height: 1.35; margin-top: 4px;">Pertanyaan Mahkamah...</h4>
+      </div>
+      <div class="option-btn-box" id="court-options-box"></div>
+    </div>
+  </div>
+
+  <!-- MODAL TITIK BALIK PANJANG & EMOSIONAL (PETAK 25) -->
+  <div id="story-breakthrough-modal" class="modal-backdrop">
+    <div class="modal-card-chunky" style="max-width: 620px;">
+      <div class="modal-header-ribbon">
+        <span class="modal-title-tag" id="story-modal-title">✨ TITIK BALIK NURANI PERJUANGAN</span>
+        <span class="diff-chip active-diff" style="background:#7e22ce;">PENCAPAIAN PETAK 25</span>
+      </div>
+      <div style="display: flex; gap: 12px; align-items: center;">
+        <div class="hud-avatar-frame" id="story-char-avatar" style="width: 58px; height: 66px;"></div>
+        <div>
+          <h3 id="story-char-name" style="font-size: 1.1rem; font-weight: 900;">Kirana</h3>
+          <span id="story-char-role" style="font-size: 0.78rem; font-weight: 800; color: #0284c7;">Aktivis Kampus</span>
+        </div>
+      </div>
+      <div class="story-bubble-narrative" id="story-monologue-text" style="white-space: pre-line;">
+        "Monolog naratif mendalam..."
+      </div>
+      <div class="story-reflection-box" id="story-meaning-text">
+        Penjelasan makna nilai konstitusional yang dihayati.
+      </div>
+      <div style="display: flex; justify-content: flex-end;">
+        <button class="btn-chunky btn-gold" onclick="closeStoryModal()">TERUSKAN PERJALANAN ➔</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL REFLEKSI SETIAP KELIPATAN 25 POIN -->
+  <div id="milestone-story-modal" class="modal-backdrop">
+    <div class="modal-card-chunky">
+      <div class="modal-header-ribbon">
+        <span class="modal-title-tag" style="color: #b45309;">🌟 REFLEKSI PENCAPAIAN INTEGRITAS</span>
+        <span class="diff-chip active-diff" id="milestone-badge-text" style="background: #f59e0b;">25 POIN INTEGRITAS</span>
+      </div>
+      <div style="display: flex; gap: 12px; align-items: center;">
+        <div class="hud-avatar-frame" id="milestone-char-avatar" style="width: 54px; height: 60px;"></div>
+        <div>
+          <h3 id="milestone-char-name" style="font-size: 1.05rem; font-weight: 900;">Kirana</h3>
+          <span id="milestone-char-role" style="font-size: 0.76rem; font-weight: 800; color: #0284c7;">Aktivis Kampus</span>
+        </div>
+      </div>
+      <div class="story-bubble-narrative" id="milestone-narrative-text" style="background: #fefce8; border-color: #eab308; color: #854d0e;">
+        "Refleksi pertumbuhan moral..."
+      </div>
+      <div class="story-reflection-box" id="milestone-principle-text">
+        Prinsip konstitusional yang dipegang teguh.
+      </div>
+      <div style="display: flex; justify-content: flex-end;">
+        <button class="btn-chunky btn-gold" onclick="closeMilestoneModal()">LANJUTKAN LANGKAH ➔</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL SERTIFIKAT KELULUSAN SEDERHANA & PERSONAL -->
+  <div id="certificate-modal" class="modal-backdrop">
+    <div class="cert-modal-box">
+      <div class="cert-simple-paper" id="printable-certificate">
+        <div class="cert-header-clean">
+          <span class="cert-tag-sub">PIAGAM KELULUSAN KONSTITUSIONAL</span>
+          <h2 class="cert-title-clean">SERTIFIKAT PENGHARGAAN</h2>
+          <p class="cert-subtitle-clean">Constitutional Choices — Langkah Kecil, Dampak Besar untuk Negara</p>
+        </div>
+
+        <div class="cert-divider-line"></div>
+
+        <div class="cert-recipient-section">
+          <div class="cert-char-avatar-frame" id="cert-char-avatar"></div>
+          <div class="cert-recipient-info">
+            <span class="cert-label-small">DIBERIKAN DENGAN HORMAT KEPADA:</span>
+            <h3 class="cert-recipient-name" id="cert-recipient-name">Kirana</h3>
+            <span class="cert-recipient-role" id="cert-recipient-role">Aktivis Kampus</span>
+          </div>
+        </div>
+
+        <div class="cert-body-narrative" id="cert-body-narrative">
+          Telah berhasil menyelesaikan 50 petak tantangan konstitusional dan lulus Sidang Pleno Mahkamah Konstitusi.
+        </div>
+
+        <div class="cert-stats-grid">
+          <div class="cert-stat-item">
+            <span class="cert-stat-label">SKOR INTEGRITAS</span>
+            <span class="cert-stat-val" id="cert-stat-score">180 PTS</span>
+          </div>
+          <div class="cert-stat-item">
+            <span class="cert-stat-label">TINGKAT KESULITAN</span>
+            <span class="cert-stat-val" id="cert-stat-diff">MEDIUM</span>
+          </div>
+          <div class="cert-stat-item">
+            <span class="cert-stat-label">PREDIKAT AKHIR</span>
+            <span class="cert-stat-val" id="cert-stat-grade">NEGARAWAN TELADAN</span>
+          </div>
+        </div>
+
+        <div class="cert-footer-simple">
+          <div class="cert-foot-col">
+            <span class="cert-foot-date" id="cert-date-text">Surabaya, 12 Oktober 2026</span>
+            <span class="cert-foot-sub">Tanggal Kelulusan Sidang</span>
+          </div>
+          <div class="cert-stamp-badge">
+            <span>TERVERIFIKASI</span>
+          </div>
+          <div class="cert-foot-col" style="text-align: right;">
+            <span class="cert-sign-name">Nahl Sanktera Jagad</span>
+            <span class="cert-foot-sub">Pengembang Game (NRP: 5226600078)</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="cert-action-bar no-print">
+        <button class="btn-chunky btn-gold" onclick="downloadCertificatePDF()">📄 UNDUH PDF</button>
+        <button class="btn-chunky btn-sky" onclick="downloadCertificateImage()">📥 UNDUH GAMBAR (PNG)</button>
+        <button class="btn-chunky btn-white" onclick="printCertificate()">🖨️ CETAK</button>
+        <button class="btn-chunky btn-white" onclick="closeCertificateModal()">TUTUP</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL PANDUAN -->
+  <div id="instructions-modal" class="modal-backdrop">
+    <div class="modal-card-chunky">
+      <div class="modal-header-ribbon">
+        <span class="modal-title-tag">📖 PANDUAN BERMAIN</span>
+        <button class="btn-chunky btn-white" style="padding: 2px 8px;" onclick="closeModal('instructions-modal')">✕</button>
+      </div>
+      <div style="font-size: 0.8rem; line-height: 1.5; color: #334155; display: flex; flex-direction: column; gap: 8px;">
+        <p>1. <strong>Tujuan:</strong> Berjalan dari Petak 1 ke Petak 50 sambil mengumpulkan Poin Integritas sebanyak mungkin.</p>
+        <p>2. <strong>Dadu:</strong> Tekan tombol Lempar Dadu. Warna angka dadu akan menyesuaikan dengan karakter pilihanmu!</p>
+        <p>3. <strong>Petak 25 (Ujian Maraton):</strong> Wajib lulus 5 soal berturut-turut. Jika salah 1 soal, kembali ke Petak 1.</p>
+        <p>4. <strong>Petak 50 (Sidang Mahkamah):</strong> Ujian akhir 10 soal. Jika gagal, mundur 20 langkah ke Petak 30.</p>
+        <p>5. <strong>Refleksi 25 Poin:</strong> Setiap mengumpulkan kelipatan 25 poin integritas, karakter akan mengalami momen refleksi kepribadian!</p>
+      </div>
+      <button class="btn-chunky btn-gold" onclick="closeModal('instructions-modal')">MENGERTI</button>
+    </div>
+  </div>
+
+  <!-- MODAL TENTANG -->
+  <div id="about-modal" class="modal-backdrop">
+    <div class="modal-card-chunky">
+      <div class="modal-header-ribbon">
+        <span class="modal-title-tag">ℹ️ TENTANG GAME</span>
+        <button class="btn-chunky btn-white" style="padding: 2px 8px;" onclick="closeModal('about-modal')">✕</button>
+      </div>
+      <p style="font-size: 0.82rem; line-height: 1.5; color: #334155;">
+        <strong>Constitutional Choices</strong> adalah media pembelajaran interaktif yang memadukan nilai-nilai Pancasila, UUD Negara Republik Indonesia Tahun 1945, serta etika industri teknologi game dan transformasi digital.
+      </p>
+      <button class="btn-chunky btn-gold" onclick="closeModal('about-modal')">TUTUP</button>
+    </div>
+  </div>
+
+  <!-- MODAL KREDIT -->
+  <div id="credit-modal" class="modal-backdrop">
+    <div class="modal-card-chunky" style="text-align: center; align-items: center;">
+      <span class="modal-title-tag" style="font-size: 1.1rem;">🎖️ KREDIT PENGEMBANG</span>
+      <div style="background: #f1f5f9; border: 2px solid var(--border-dark); border-radius: 14px; padding: 14px; width: 100%; margin: 8px 0;">
+        <h3 style="font-size: 1.2rem; font-weight: 900; color: var(--navy-dark);">Nahl Sanktera Jagad</h3>
+        <p style="font-size: 0.9rem; font-weight: 800; color: #0284c7; margin-top: 2px;">NRP: 5226600078</p>
+        <p style="font-size: 0.78rem; font-weight: 700; color: #64748b; margin-top: 6px;">
+          Tugas UTS Mata Kuliah Kewarganegaraan — Teknologi Game
+        </p>
+      </div>
+      <button class="btn-chunky btn-gold" onclick="closeModal('credit-modal')">TUTUP</button>
+    </div>
+  </div>
+
+  <!-- MODAL EXIT CONFIRMATION -->
+  <div id="exit-modal" class="modal-backdrop">
+    <div class="modal-card-chunky" style="text-align: center; align-items: center; max-width: 420px;">
+      <span class="modal-title-tag" style="color: #dc2626;">🚪 KELUAR DARI PERMAINAN</span>
+      <p style="font-size: 0.82rem; color: #475569; margin: 6px 0;">Apakah kamu yakin ingin mengakhiri sesi permainan?</p>
+      <div style="display: flex; gap: 10px; width: 100%; justify-content: center;">
+        <button class="btn-chunky btn-white" style="flex: 1;" onclick="closeModal('exit-modal')">BATAL</button>
+        <button class="btn-chunky btn-danger" style="flex: 1;" onclick="confirmExitGame()">YA, KELUAR</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- SCREEN EXIT SELESAI -->
+  <div id="app-exit-screen" class="modal-backdrop" style="background: #090e1a;">
+    <div class="modal-card-chunky" style="text-align: center; align-items: center; max-width: 480px;">
+      <h2 style="font-size: 1.4rem; font-weight: 900; color: #ef4444;">SESI TELAH DITUTUP</h2>
+      <p style="font-size: 0.82rem; color: #64748b; line-height: 1.4; margin: 8px 0;">
+        Terima kasih telah bermain Constitutional Choices. Kamu dapat menutup tab peramban ini sekarang.
+      </p>
+      <button class="btn-chunky btn-gold" onclick="location.reload()">🔄 MAIN KEMBALI</button>
+    </div>
+  </div>
+
+  <script>
+    /* ==========================================================================
+       1. DATA KARAKTER & SVG PIXEL ART ASLI
+       ========================================================================== */
+    const CHARACTERS_DATA = [
+      {
+        id: "char-1",
+        name: "Arya",
+        role: "Taat Hukum",
+        desc: "Pemuda berwibawa yang mengawal konstitusi sebagai perisai keadilan sejati.",
+        themeColor: "#2563eb",
+        accentColor: "#1d4ed8",
+        svg: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 38" width="100%" height="100%">
+          <rect x="10" y="5" width="12" height="7" fill="#1e1b4b"/>
+          <rect x="9" y="8" width="14" height="4" fill="#312e81"/>
+          <rect x="10" y="12" width="12" height="10" fill="#fde047"/>
+          <rect x="11" y="14" width="4" height="3" fill="#0f172a"/>
+          <rect x="17" y="14" width="4" height="3" fill="#0f172a"/>
+          <rect x="12" y="15" width="2" height="2" fill="#ffffff"/>
+          <rect x="18" y="15" width="2" height="2" fill="#ffffff"/>
+          <rect x="14" y="19" width="4" height="1.5" fill="#e11d48"/>
+          <rect x="9" y="22" width="14" height="8" fill="#1e3a8a"/>
+          <rect x="14" y="22" width="4" height="6" fill="#ffffff"/>
+          <rect x="15" y="24" width="2" height="4" fill="#ef4444"/>
+          <rect x="11" y="30" width="10" height="6" fill="#0f172a"/>
+          <rect x="10" y="36" width="4" height="2" fill="#334155"/>
+          <rect x="18" y="36" width="4" height="2" fill="#334155"/>
+        </svg>`,
+        customImage: null
+      },
+      {
+        id: "char-2",
+        name: "Kirana",
+        role: "Aktivis Kampus",
+        desc: "Gadis cerdas berjiwa sosial yang membela kebebasan berpendapat dan musyawarah.",
+        themeColor: "#ef4444",
+        accentColor: "#b91c1c",
+        svg: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 38" width="100%" height="100%">
+          <rect x="8" y="4" width="16" height="6" fill="#854d0e"/>
+          <rect x="6" y="8" width="20" height="14" fill="#a16207"/>
+          <rect x="21" y="7" width="3" height="3" fill="#f43f5e"/>
+          <rect x="10" y="10" width="12" height="10" fill="#fef08a"/>
+          <rect x="11" y="13" width="3" height="3" fill="#1e1b4b"/>
+          <rect x="18" y="13" width="3" height="3" fill="#1e1b4b"/>
+          <rect x="12" y="14" width="1" height="1" fill="#ffffff"/>
+          <rect x="19" y="14" width="1" height="1" fill="#ffffff"/>
+          <rect x="10" y="16" width="2" height="1" fill="#f472b6"/>
+          <rect x="20" y="16" width="2" height="1" fill="#f472b6"/>
+          <rect x="14" y="17" width="4" height="1.5" fill="#e11d48"/>
+          <rect x="9" y="20" width="14" height="7" fill="#dc2626"/>
+          <rect x="13" y="20" width="6" height="5" fill="#f8fafc"/>
+          <rect x="10" y="27" width="12" height="5" fill="#1e293b"/>
+          <rect x="10" y="32" width="4" height="4" fill="#78350f"/>
+          <rect x="18" y="32" width="4" height="4" fill="#78350f"/>
+        </svg>`,
+        customImage: null
+      },
+      {
+        id: "char-3",
+        name: "Bima",
+        role: "Mediator Damai",
+        desc: "Pemuda sabar berjiwa gotong royong yang selalu merajut persatuan di tengah konflik.",
+        themeColor: "#10b981",
+        accentColor: "#047857",
+        svg: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 38" width="100%" height="100%">
+          <rect x="10" y="5" width="12" height="6" fill="#451a03"/>
+          <rect x="9" y="8" width="14" height="4" fill="#78350f"/>
+          <rect x="10" y="11" width="12" height="10" fill="#fed7aa"/>
+          <rect x="11" y="14" width="3" height="3" fill="#0f172a"/>
+          <rect x="18" y="14" width="3" height="3" fill="#0f172a"/>
+          <rect x="13" y="18" width="6" height="2" fill="#ea580c"/>
+          <rect x="8" y="21" width="16" height="8" fill="#15803d"/>
+          <rect x="6" y="22" width="3" height="5" fill="#facc15"/>
+          <rect x="23" y="22" width="3" height="5" fill="#facc15"/>
+          <rect x="11" y="29" width="10" height="7" fill="#713f12"/>
+          <rect x="10" y="36" width="4" height="2" fill="#475569"/>
+          <rect x="18" y="36" width="4" height="2" fill="#475569"/>
+        </svg>`,
+        customImage: null
+      },
+      {
+        id: "char-4",
+        name: "Maya",
+        role: "Peneliti Kebijakan",
+        desc: "Mahasiswi visioner yang memperjuangkan transparansi data dan keadilan kebijakan.",
+        themeColor: "#7e22ce",
+        accentColor: "#581c87",
+        svg: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 38" width="100%" height="100%">
+          <rect x="9" y="4" width="14" height="6" fill="#581c87"/>
+          <rect x="7" y="8" width="18" height="12" fill="#6b21a8"/>
+          <rect x="20" y="8" width="2" height="2" fill="#e9d5ff"/>
+          <rect x="10" y="10" width="12" height="10" fill="#fef08a"/>
+          <rect x="10" y="13" width="5" height="4" fill="#a855f7"/>
+          <rect x="17" y="13" width="5" height="4" fill="#a855f7"/>
+          <rect x="12" y="14" width="2" height="2" fill="#1e1b4b"/>
+          <rect x="18" y="14" width="2" height="2" fill="#1e1b4b"/>
+          <rect x="14" y="18" width="4" height="1.5" fill="#db2777"/>
+          <rect x="8" y="20" width="16" height="8" fill="#9333ea"/>
+          <rect x="12" y="20" width="8" height="3" fill="#ffffff"/>
+          <rect x="10" y="28" width="12" height="5" fill="#475569"/>
+          <rect x="10" y="33" width="4" height="3" fill="#1e1b4b"/>
+          <rect x="18" y="33" width="4" height="3" fill="#1e1b4b"/>
+        </svg>`,
+        customImage: null
+      }
+    ];
+
+    /* DATA SERTIFIKAT TERSUAI KARAKTER */
+    const CHARACTER_CERTIFICATES = {
+      "char-1": {
+        grade: "PENGAWAL SUPREMASI HUKUM",
+        narrative: "Dianugerahkan atas keteguhan memegang teguh supremasi hukum, memperlakukan setiap warga negara setara di hadapan undang-undang tanpa kompromi, dan membuktikan bahwa konstitusi adalah perisai pelindung martabat rakyat jelata."
+      },
+      "char-2": {
+        grade: "SUARA NURANI DEMOKRASI",
+        narrative: "Dianugerahkan atas keberanian memperjuangkan kebebasan bersuara yang bertanggung jawab, mengedepankan musyawarah mufakat yang beretika, serta menjadikan empati kerakyatan sebagai pedoman tertinggi dalam bermasyarakat."
+      },
+      "char-3": {
+        grade: "PENJAGA PERSATUAN BANGSA",
+        narrative: "Dianugerahkan atas kelapangan hati menjembatani silang pendapat, membendung polarisasi melalui toleransi beragama dan budaya, serta merawat semangat gotong royong sebagai denyut nadi persatuan Indonesia."
+      },
+      "char-4": {
+        grade: "PIONIR KEBIJAKAN BERINTEGRITAS",
+        narrative: "Dianugerahkan atas dedikasi riset berbasis data yang objektif dan transparan, membentengi ruang publik dari hoaks dan manipulasi digital, serta mendedikasikan ilmu demi lahirnya kebijakan publik yang adil dan berkeadilan sosial."
+      }
+    };
+
+    /* DATA CERITA PANJANG & EMOSIONAL (PETAK 25) */
+    const CHARACTER_STORY_25 = {
+      "char-1": {
+        monologue: "Dadaku berdegup kencang saat palu majelis pemeriksa diketukkan tadi. Selama ini, aku mengira ketaatan hukum hanyalah soal menghafal deretan pasal yang kaku, dingin, dan menuntut kepatuhan buta.\n\nNamun, melewati lima pertanyaan ujian maraton yang mengguncang batinku di Petak 25 ini membongkar seluruh persepsiku. Aku melihat langsung bagaimana hukum bisa dengan mudah dipelintir menjadi alat represi jika nurani penegaknya telah mati. Hukum diciptakan bukan untuk menakut-nakuti rakyat, melainkan menjadi benteng pelindung paling kokoh bagi mereka yang paling lemah dan tak bersuara.\n\nAir mataku nyaris menetes saat menyadari: integritasku hari ini diuji bukan demi nilai akademis semata, melainkan untuk membuktikan bahwa di pundak pemuda seperti kita lah, keadilan substantif bangsa ini akan terus bernapas.",
+        meaning: "Arya menghayati Pasal 1 ayat (3) UUD NRI 1945: Konsep Negara Hukum (Rechtsstaat) menghendaki keadilan substantif yang memanusiakan manusia, bukan sekadar kepatuhan formalitas hukum yang menindas."
+      },
+      "char-2": {
+        monologue: "Tanganku gemetar hebat saat mempertahankan argumen di hadapan majelis tadi. Di masa lalu, aku sering berpikir bahwa keberanian seorang aktivis diukur dari seberapa lantang ia berteriak di mimbar bebas dan seberapa keras ia mengguncang meja perdebatan.\n\nTetapi ujian di Petak 25 ini menghempaskan ego pribadiku. Aku tersadar bahwa kebebasan berpendapat tanpa kesediaan mendengarkan lawan bicara adalah bibit dari tirani baru. Teriakan tanpa pemahaman hukum hanyalah kebisingan yang memecah-belah. Keberanian sejati adalah ketulusan menekan amarah, merangkul mereka yang berbeda sudut pandang, dan merumuskan mufakat yang beretika.\n\nKini aku paham seutuhnya: perjuanganku menyuarakan hak rakyat harus selalu berakar pada konstitusi dan welas asih. Suara ini bukan lagi milik egoku, melainkan titipan nurani mereka yang berharap akan hari esok yang lebih adil.",
+        meaning: "Kirana meresapi Sila ke-4 Pancasila & Pasal 28E ayat (3): Kemerdekaan berserikat dan berpendapat adalah hak luhur yang wajib diimbangi dengan hikmat kebijaksanaan permusyawaratan demi menjaga keutuhan bangsa."
+      },
+      "char-3": {
+        monologue: "Saat perdebatan di gerbang sidang tadi semakin memanas dan masing-masing pihak bersikeras mempertahankan dalihnya, hatiku terasa seperti diiris. Aku melihat betapa rapuhnya persaudaraan kita ketika prasangka kelompok dan arogansi kedaerahan dibiarkan menyala.\n\nNamun, ketika konsensus damai akhirnya berhasil kita capai melalui musyawarah yang sabar, napasku terasa begitu lapang. Bangsa ini terlalu besar, terlalu indah, dan terlalu mahal darah para pendirinya untuk dirobek-robek oleh polarisasi dan kebencian sempit.\n\nUjian di Petak 25 ini menancapkan janji abadi di lubuk hatiku: aku tidak akan pernah membiarkan persatuan ini retak. Gotong royong bukanlah slogan masa lalu, melainkan denyut nadi yang harus kita jaga bersama di setiap jengkal tanah air.",
+        meaning: "Bima membuktikan Sila ke-3 Pancasila: Persatuan Indonesia hanya dapat berdiri kokoh apabila toleransi, kelapangan dada, dan kerelaan mendahulukan kepentingan bersama ditempatkan di atas segala ego golongan."
+      },
+      "char-4": {
+        monologue: "Sebagai seorang peneliti, aku terbiasa berlindung di balik grafik data, kode pemrograman, dan angka-angka statistik yang netral. Aku sempat menganggap fakta empiris sudah cukup untuk menyelesaikan seluruh persoalan pelik bangsa ini.\n\nTetapi pertanyaan-pertanyaan etika di Petak 25 tadi menelanjangi kepongahan intelektualku. Angka kemiskinan, ketimpangan akses digital, dan kebocoran data pengguna bukanlah sekadar baris kode tanpa rasa—di balik setiap angka itu, ada martabat, darah, dan air mata manusia yang hak konstitusionalnya sedang terancam.\n\nSains, teknologi, dan kebijakan publik tanpa kompas moral hanyalah instrumen penindasan modern yang canggih. Mulai detik ini, setiap riset dan aplikasi yang kurancang harus berpihak pada keadilan sosial dan mengangkat harkat hidup mereka yang tertinggal.",
+        meaning: "Maya menginternalisasi Sila ke-5 Pancasila & Pasal 28H: Inovasi teknologi, data, dan kebijakan negara wajib bermuara pada pemerataan keadilan sosial serta perlindungan martabat seluruh rakyat Indonesia."
+      }
+    };
+
+    /* DATA REFLEKSI SETIAP KELIPATAN 25 POIN INTEGRITAS */
+    const CHARACTER_MILESTONES = {
+      "char-1": {
+        25: {
+          narrative: "\"Aku mulai menyadari bahwa undang-undang bukanlah buku mantra yang menghakimi, melainkan kesepakatan sosial luhur agar kita tidak saling memangsa satu sama lain.\"",
+          principle: "Arya memahami esensi kesetaraan di hadapan hukum (Equality before the law) sesuai Pasal 27 ayat (1)."
+        },
+        50: {
+          narrative: "\"Godaan untuk mengambil jalan pintas dan kompromi kotor sempat melintas di benakku, namun integritas menuntut kita bertahan dalam kejujuran meski terasa sepi.\"",
+          principle: "Arya memperkokoh integritas akademik dan profesional sebagai wujud pengamalan Sila ke-2 Pancasila."
+        },
+        75: {
+          narrative: "\"Melihat kawan-kawan yang terpinggirkan haknya membuatku paham: membela konstitusi berarti berdiri tegak di samping mereka yang membutuhkan perlindungan hukum.\"",
+          principle: "Arya menghayati peran hukum sebagai instrumen bantuan hukum dan pembelaan hak asasi manusia (Pasal 28D ayat 1)."
+        },
+        100: {
+          narrative: "\"Seratus poin integritas ini bukan piala kebanggaan diri, melainkan pengingat bahwa keadilan tidak akan pernah tegak jika para pemudanya bersikap apatis.\"",
+          principle: "Arya memegang teguh kewajiban setiap warga negara menghormati hak asasi orang lain (Pasal 28J ayat 1)."
+        },
+        125: {
+          narrative: "\"Kini aku siap melangkah ke Mahkamah. Hukum telah menjadi darah dan jiwaku—bukan untuk menaklukkan lawan, melainkan untuk merawat martabat Republik ini.\"",
+          principle: "Arya mencapai kedewasaan bernegara: komitmen menjaga konstitusi sebagai hukum tertinggi (Supremasi Hukum)."
+        }
+      },
+      "char-2": {
+        25: {
+          narrative: "\"Aku belajar bahwa mendengarkan dengan tulus membutuhkan keberanian yang jauh lebih besar daripada sekadar berorasi membakar amarah massa.\"",
+          principle: "Kirana menghayati etika dialog dalam kebebasan berpendapat (Pasal 28E ayat 3)."
+        },
+        50: {
+          narrative: "\"Ketika perbedaan pendapat memuncak di ruang diskusi, aku memilih menahan amarah demi menemukan titik temu yang menenangkan semua pihak.\"",
+          principle: "Kirana menerapkan nilai musyawarah mufakat yang beradab (Sila ke-4 Pancasila)."
+        },
+        75: {
+          narrative: "\"Aktivisme kampus tidak boleh eksklusif. Kita harus merangkul mereka yang pendiam dan memastikan setiap suara marjinal didengar setara.\"",
+          principle: "Kirana memperjuangkan kesetaraan perlakuan tanpa diskriminasi (Pasal 28I ayat 2)."
+        },
+        100: {
+          narrative: "\"Perjuangan ini telah mengajarkanku bahwa empati kerakyatan adalah energi yang tak akan pernah habis untuk memperbaiki ketimpangan sosial.\"",
+          principle: "Kirana mengamalkan keadilan sosial dan kepedulian terhadap kaum rentan (Sila ke-5 Pancasila)."
+        },
+        125: {
+          narrative: "\"Aku melangkah menuju gerbang akhir dengan hati yang tenang. Suaraku kini bukan lagi teriakan protes, melainkan simfoni persatuan dan harapan bersama.\"",
+          principle: "Kirana membuktikan kepemimpinan demokratis yang berakar pada nurani dan konstitusi."
+        }
+      },
+      "char-3": {
+        25: {
+          narrative: "\"Sebuah jabat tangan hangat mampu meruntuhkan dinding prasangka yang telah dibangun bertahun-tahun oleh rasa curiga.\"",
+          principle: "Bima menanamkan toleransi dan kerukunan hidup antarwarga (Sila ke-1 dan ke-3 Pancasila)."
+        },
+        50: {
+          narrative: "\"Gotong royong bukanlah masa lalu yang usang; ia adalah teknologi sosial tercanggih yang dimiliki bangsa ini untuk menyelesaikan krisis.\"",
+          principle: "Bima merawat modal sosial bangsa berupa kekeluargaan dan kerja sama kolektif (Pasal 33 ayat 1)."
+        },
+        75: {
+          narrative: "\"Di tengah polarisasi media sosial yang bising, menjadi jembatan perdamaian adalah tugas sunyi yang membutuhkan ketabahan tanpa batas.\"",
+          principle: "Bima membendung ujaran kebencian demi memelihara ketertiban umum (Pasal 28J ayat 2)."
+        },
+        100: {
+          narrative: "\"Seratus langkah persaudaraan membuktikan bahwa keragaman suku, agama, dan pandangan adalah anugerah terindah Nusantara, bukan ancaman.\"",
+          principle: "Bima menghidupkan semboyan Bhinneka Tunggal Ika dalam tindakan nyata sehari-hari."
+        },
+        125: {
+          narrative: "\"Kekuatan sejati seorang pemuda terletak pada kemampuannya menyatukan kembali kepingan-kepingan harapan bangsa yang sempat retak.\"",
+          principle: "Bima siap mengawal persatuan Indonesia seutuhnya di hadapan Mahkamah Konstitusi."
+        }
+      },
+      "char-4": {
+        25: {
+          narrative: "\"Data empiris dan algoritma pemrograman harus tunduk pada etika kemanusiaan; kita tidak boleh memperlakukan manusia sekadar angka statistik.\"",
+          principle: "Maya menegakkan etika ilmu pengetahuan dan hak atas perlindungan data pribadi (Pasal 28G ayat 1)."
+        },
+        50: {
+          narrative: "\"Menolak manipulasi hasil riset demi kepentingan sponsor adalah ujian integritas ilmiah pertama yang berhasil kulalui dengan kepala tegak.\"",
+          principle: "Maya mempraktikkan kejujuran akademis sebagai amanat mencerdaskan kehidupan bangsa (Pasal 31 ayat 3)."
+        },
+        75: {
+          narrative: "\"Teknologi harus bersifat inklusif. Setiap baris kode yang kutulis harus membuka akses bagi penyandang disabilitas dan kelompok marjinal.\"",
+          principle: "Maya merealisasikan hak kemudahan dan perlakuan khusus demi kesetaraan (Pasal 28H ayat 2)."
+        },
+        100: {
+          narrative: "\"Transparansi informasi publik adalah vaksin paling ampuh melawan wabah kebohongan, hoaks, dan manipulasi digital di ruang siber.\"",
+          principle: "Maya mengawal hak warga negara memperoleh informasi yang benar dan objektif (Pasal 28F)."
+        },
+        125: {
+          narrative: "\"Ilmu pengetahuan dan riset kebijakan yang kugeluti kini memiliki kompas moral yang tak tergoyahkan: kemaslahatan dan keadilan sosial bagi seluruh rakyat.\"",
+          principle: "Maya mendedikasikan inovasi sains untuk kemajuan peradaban dan kesejahteraan umum."
+        }
+      }
+    };
+
+    /* ==========================================================================
+       2. DATABASE SOAL LENGKAP & BERVARIASI DI SELURUH 50 PETAK
+       ========================================================================== */
+    const TILE_CHALLENGES = {
+      2: {
+        category: "💬 DIALOG ETIKA GAME",
+        title: "Aksesibilitas Gamers Disabilitas",
+        scenario: "Seorang rekan game developer menyarankan menghapus fitur pembaca teks suara (text-to-speech) dan mode buta warna demi menghemat memori aplikasi.",
+        article: "Pasal 28H ayat (2) UUD 1945 & Sila ke-5 Pancasila",
+        options: [
+          { text: "Menghapusnya karena pemain berkebutuhan khusus jumlahnya sangat sedikit", score: 0, review: "Mengabaikan hak kesetaraan akses kelompok disabilitas melanggar prinsip inklusivitas." },
+          { text: "Mempertahankan fitur aksesibilitas agar setiap warga negara tanpa diskriminasi dapat menikmati karya game", score: 10, review: "Pilihan mulia yang menghormati hak atas kemudahan dan perlakuan khusus bagi penyandang disabilitas." },
+          { text: "Menjadikannya fitur berbayar mahal bagi mereka yang membutuhkan", score: 0, review: "Diskriminatif dan mengeksploitasi keterbatasan fisik demi profit finansial." }
+        ]
+      },
+      3: {
+        category: "💡 KUIS KILAT REGULASI",
+        title: "Sistem Klasifikasi Usia Game (IGRS)",
+        scenario: "Apa landasan utama pemerintah Indonesia menetapkan sistem klasifikasi usia (Indonesia Game Rating System / IGRS) pada setiap game yang beredar?",
+        article: "Pasal 28B ayat (2) UUD 1945 & Permenkominfo Klasifikasi Gim",
+        options: [
+          { text: "Menghambat kreativitas pengembang lokal agar kalah bersaing", score: 0, review: "Keliru; regulasi hadir justru untuk melindungi ekosistem dan konsumen secara tertib." },
+          { text: "Melindungi hak anak atas kelangsungan hidup, tumbuh, dan berkembang dari paparan konten yang tidak sesuai usia", score: 10, review: "Tepat sekali! Pasal 28B ayat (2) menjamin hak anak atas perlindungan dari kekerasan dan diskriminasi psikologis." },
+          { text: "Sebagai syarat formalitas perpajakan digital semata", score: 0, review: "Kurang tepat; tujuan utamanya adalah perlindungan psikologis dan moral generasi muda." }
+        ]
+      },
+      4: {
+        category: "⚖️ KASUS KONSTITUSIONAL 1",
+        title: "Kebebasan Berpendapat vs Musyawarah Tim Game",
+        scenario: "Dalam rapat penentuan tema game kampus, seorang anggota memaksakan gagasannya secara agresif dan menolak mendengarkan kritik anggota lain.",
+        article: "Pasal 28E ayat (3) & Sila ke-4 Pancasila",
+        options: [
+          { text: "Memaksakan voting kilat sepihak agar rapat cepat selesai tanpa mendengarkan siapa pun", score: 0, review: "Mengabaikan esensi musyawarah mufakat yang beradab." },
+          { text: "Mengajak musyawarah dengan aturan bicara bergantian secara santun dan menghargai masukan bersama", score: 20, review: "Solusi bijak dan konstitusional! Menghargai hak berpendapat sekaligus memelihara ketertiban bersama." },
+          { text: "Mengeluarkan anggota tersebut secara sepihak dari proyek tanpa dialog pembinaan", score: 0, review: "Tindakan otoriter yang mencederai semangat kebersamaan akademis." }
+        ]
+      },
+      5: {
+        category: "💬 DIALOG ETIKA DIGITAL",
+        title: "Lisensi Aset Bebas (Creative Commons)",
+        scenario: "Tim Anda membutuhkan musik latar dan menemukan audio berlisensi Creative Commons Zero (CC0) serta audio komersial berhak cipta tanpa izin.",
+        article: "Pasal 28C ayat (1) & UU Hak Cipta No. 28/2014",
+        options: [
+          { text: "Memakai audio berhak cipta curian dan mengganti namanya sedikit", score: 0, review: "Plagiarisme terselubung yang mencoreng integritas pengembang." },
+          { text: "Memanfaatkan aset berlisensi bebas CC0 dan tetap mencantumkan atribusi penghargaan kepada kreator aslinya", score: 10, review: "Sangat etis! Menghormati hak kekayaan intelektual sekaligus memanfaatkan karya terbuka secara legal." },
+          { text: "Membobol lisensi audio berbayar dengan aplikasi crack ilegal", score: 0, review: "Pelanggaran pidana hak cipta dan perusakan etika digital." }
+        ]
+      },
+      6: {
+        category: "📖 WAWASAN KONSTITUSI",
+        title: "Prinsip Checks and Balances",
+        scenario: "Bagaimana amandemen UUD 1945 memastikan tidak ada satu lembaga negara pun yang memiliki kekuasaan mutlak tanpa pengawasan?",
+        article: "UUD NRI 1945 (Prinsip Pembagian Kekuasaan)",
+        options: [
+          { text: "Melalui sistem pengawasan dan keseimbangan (checks and balances) antar-lembaga legislatif, eksekutif, dan yudikatif", score: 15, review: "Benar! Tidak ada lagi lembaga tertinggi mutlak; semua lembaga diatur wewenang dan pengawasannya oleh UUD." },
+          { text: "Dengan menyerahkan seluruh keputusan akhir kepada kepala kepolisian", score: 0, review: "Keliru; kepolisian adalah aparatur penegak hukum, bukan pemegang kekuasaan konstitusi tertinggi." },
+          { text: "Menghapuskan lembaga peradilan agar eksekutif bekerja lebih cepat", score: 0, review: "Sangat keliru; itu adalah ciri negara otoriter dan merusak prinsip negara hukum." }
+        ]
+      },
+      7: {
+        category: "💡 KUIS KILAT GAME DEV",
+        title: "Transparansi Peluang Gacha (Anti-Dark Pattern)",
+        scenario: "Apakah studio game wajib menampilkan persentase probabilitas undian item acak (gacha drop rate) secara transparan kepada pemain?",
+        article: "UU Perlindungan Konsumen No. 8/1999 & Pasal 28D ayat (1)",
+        options: [
+          { text: "Tidak perlu, karena merahasiakan peluang adalah trik dagang sah", score: 0, review: "Dark pattern yang manipulatif melanggar hak konsumen atas informasi yang benar." },
+          { text: "Wajib transparan demi menjamin hak konsumen atas informasi yang jujur, benar, dan tidak menyesatkan", score: 10, review: "Tepat sekali! Keadilan transaksi digital mengharuskan keterbukaan informasi bagi para pemain." },
+          { text: "Cukup memberitahukan persentase kepada pemain VIP yang membayar paling banyak", score: 0, review: "Diskriminatif dan mencederai asas perlakuan adil kepada seluruh konsumen." }
+        ]
+      },
+      9: {
+        category: "💬 DIALOG ETIKA KAMPUS",
+        title: "Parental Control & Tumbuh Kembang",
+        scenario: "Seorang mahasiswa membuat game dengan target anak-anak, tetapi menyematkan fitur pembelian mata uang virtual tanpa memerlukan verifikasi orang tua.",
+        article: "Pasal 28B ayat (2) & UU Perlindungan Anak",
+        options: [
+          { text: "Membiarkannya agar keuntungan studio melonjak drastis", score: 0, review: "Eksploitasi ekonomi terhadap ketidaktahuan anak adalah tindakan tidak etis." },
+          { text: "Mewajibkan fitur verifikasi orang tua (parental gate) demi melindungi anak dan keluarga dari transaksi tak sadar", score: 10, review: "Tindakan bertanggung jawab yang menjunjung etika perlindungan generasi penerus." },
+          { text: "Menyalahkan orang tua sepenuhnya jika anak mereka membelanjakan uang tabungan", score: 0, review: "Pengembang tidak boleh cuci tangan dari desain sistem yang memang sengaja menjebak." }
+        ]
+      },
+      10: {
+        category: "💡 KUIS KILAT HUKUM DIGITAL",
+        title: "Hak Cipta Kode Program vs Paten Mekanik",
+        scenario: "Di Indonesia, perlindungan hukum terhadap kode sumber (source code) perangkat lunak game dikelompokkan ke dalam rezim...",
+        article: "UU Hak Cipta No. 28/2014 & Pasal 28C ayat (1)",
+        options: [
+          { text: "Hak Cipta (sebagai karya cipta program komputer yang dilindungi sejak diwujudkan)", score: 10, review: "Tepat! Source code dilindungi secara otomatis di bawah Undang-Undang Hak Cipta." },
+          { text: "Hak Merek Dagang untuk setiap baris penulisan fungsi", score: 0, review: "Keliru; merek dagang melindungi nama komersial, logo, atau brand, bukan baris kode logika." },
+          { text: "Rahasia Dagang yang otomatis gugur jika game diunggah ke internet", score: 0, review: "Kurang tepat; perlindungan utama karya seni dan kode game adalah Hak Cipta." }
+        ]
+      },
+      11: {
+        category: "💬 DIALOG ETIKA DIGITAL",
+        title: "Mengatasi Toxic Voice Chat & Bullying",
+        scenario: "Dalam turnamen game kampus, salah satu tim melontarkan makian berbau rasisme dan pelecehan verbal melalui voice chat kepada lawan.",
+        article: "Pasal 28G ayat (1) & Kode Etik Mahasiswa",
+        options: [
+          { text: "Menganggap hal itu biasa sebagai bagian dari 'psywar' kompetitif", score: 0, review: "Normalisasi perundungan dan rasisme merusak peradaban dan iklim kompetisi sehat." },
+          { text: "Menindak tegas pelaku dengan sanksi diskualifikasi dan peringatan etik demi menjaga martabat dan kehormatan warga", score: 10, review: "Sikap tegas dan tepat! Pasal 28G ayat (1) menjamin hak atas kehormatan dan martabat diri dari perlakuan merendahkan." },
+          { text: "Membalas dengan makian yang jauh lebih kasar", score: 0, review: "Memperkeruh suasana dan merendahkan integritas diri sendiri." }
+        ]
+      },
+      12: {
+        category: "⚖️ KASUS KONSTITUSIONAL 2",
+        title: "Penggunaan Aset Game Bajakan di Tugas Akhir",
+        scenario: "Tim game kekurangan aset 3D dan tergoda mengunduh aset berbayar curian dari situs bajakan untuk disertakan dalam tugas akhir kampus.",
+        article: "Pasal 28C ayat (1) & UU Hak Cipta No. 28/2014",
+        options: [
+          { text: "Memakai aset bajakan asal tidak ketahuan oleh dosen penguji", score: 0, review: "Pelanggaran serius terhadap HAKI dan integritas kejujuran akademik." },
+          { text: "Mengubah warnanya sedikit dan mengklaimnya sebagai karya buatan sendiri", score: 0, review: "Plagiarisme manipulatif yang mencederai etika profesi developer." },
+          { text: "Menggunakan aset berlisensi bebas (CC0) atau membuat model 3D sederhana orisinal karya sendiri", score: 20, review: "Keputusan konstitusional yang menghormati jerih payah karya orang lain sekaligus mengasah keahlian diri sendiri!" }
+        ]
+      },
+      13: {
+        category: "💡 KUIS KILAT KENEGARAAN",
+        title: "Hak Memilih dan Dipilih dalam Demokrasi Kampus",
+        scenario: "Hak setiap mahasiswa untuk mencalonkan diri dan memberikan suara dalam pemilihan ketua BEM merupakan cerminan dari...",
+        article: "Pasal 28D ayat (3) UUD NRI 1945",
+        options: [
+          { text: "Hak memperoleh kesempatan yang sama dalam pemerintahan dan organisasi", score: 10, review: "Benar! Setiap warga negara berhak atas kesempatan yang sama dalam kehidupan berdemokrasi." },
+          { text: "Kewajiban mengikuti kehendak organisasi mayoritas tanpa boleh membantah", score: 0, review: "Keliru; demokrasi menghargai hak individu dan perlindungan minoritas." },
+          { text: "Hak istimewa yang hanya boleh dinikmati mahasiswa angkatan senior", score: 0, review: "Diskriminatif dan bertentangan dengan prinsip kesetaraan hak warga kampus." }
+        ]
+      },
+      15: {
+        category: "💬 DIALOG KEBUDAYAAN",
+        title: "Representasi Budaya Nusantara dalam Game",
+        scenario: "Sebuah studio game mengangkat motif batik dan legenda daerah ke dalam game petualangan, namun mengubah maknanya menjadi simbol kejahatan iblis.",
+        article: "Pasal 32 ayat (1) UUD NRI 1945",
+        options: [
+          { text: "Membiarkannya atas nama kebebasan seni tanpa batas", score: 0, review: "Kebebasan seni tetap wajib menghormati nilai luhur dan tidak mendegradasi warisan budaya bangsa." },
+          { text: "Mengedukasi tim untuk melakukan riset budaya secara hormat dan memuliakan nilai filosofis warisan nusantara", score: 10, review: "Langkah mulia! Memajukan kebudayaan nasional Indonesia di tengah peradaban dunia sesuai amanat Pasal 32 ayat (1)." },
+          { text: "Mengharamkan seluruh pembuatan game yang mengangkat tema tradisional", score: 0, review: "Ekstrem dan kontraproduktif; budaya justru perlu dihidupkan lewat media modern secara bijak." }
+        ]
+      },
+      17: {
+        category: "💡 KUIS KILAT HAK ASASI",
+        title: "Hak yang Tidak Dapat Dikurangi (Non-Derogable Rights)",
+        scenario: "Berdasarkan Pasal 28I ayat (1) UUD 1945, manakah hak asasi manusia yang secara mutlak TIDAK DAPAT dikurangi dalam keadaan apa pun?",
+        article: "Pasal 28I ayat (1) UUD NRI 1945",
+        options: [
+          { text: "Hak untuk hidup, hak tidak disiksa, dan hak kemerdekaan pikiran serta hati nurani", score: 10, review: "Tepat sekali! Hak-hak tersebut adalah non-derogable rights yang tidak boleh dicabut bahkan dalam kondisi darurat perang sekalipun." },
+          { text: "Hak mendirikan stasiun televisi swasta", score: 0, review: "Bukan; hak penyiaran diatur dan dapat dibatasi oleh regulasi spektrum frekuensi negara." },
+          { text: "Hak memenangkan tender proyek game pemerintah tanpa seleksi", score: 0, review: "Bukan hak asasi; pengadaan publik tunduk pada aturan persaingan usaha yang sehat." }
+        ]
+      },
+      18: {
+        category: "💬 DIALOG PRIVASI DIGITAL",
+        title: "Perlindungan Data Pribadi Pengguna Game",
+        scenario: "Rekan tim mengusulkan merekam riwayat chat pribadi para pemain game untuk dijual kepada pengiklan demi menambah pemasukan.",
+        article: "Pasal 28G ayat (1) & UU PDP No. 27/2022",
+        options: [
+          { text: "Menyetujuinya karena syarat dan ketentuan (ToS) jarang dibaca pengguna", score: 0, review: "Penyalahgunaan data pribadi tanpa persetujuan eksplisit adalah pelanggaran pidana UU PDP." },
+          { text: "Menolak tegas dan menerapkan enkripsi data serta privasi sebagai standar utama (Privacy by Design)", score: 10, review: "Sikap developer profesional! Menghormati hak atas perlindungan diri pribadi dan rahasia komunikasi warga negara." },
+          { text: "Menjual separuh data pemain yang berusia di bawah umur saja", score: 0, review: "Sangat berbahaya dan melanggar klausul perlindungan spesifik data anak." }
+        ]
+      },
+      19: {
+        category: "⚖️ KASUS KONSTITUSIONAL 3",
+        title: "Toleransi Waktu Beribadah saat Game Jam Kampus",
+        scenario: "Ketika lomba maraton pengembangan game sedang mendekati batas pengumpulan larut malam, rekan satu tim meminta izin rehat sejenak untuk beribadah.",
+        article: "Pasal 29 ayat (2) & Sila ke-1 Pancasila",
+        options: [
+          { text: "Memberikan ruang dan waktu beribadah dengan penuh penghormatan dan saling mendukung", score: 20, review: "Pilihan mulia yang mencerminkan jaminan kemerdekaan memeluk dan beribadah menurut agamanya masing-masing!" },
+          { text: "Meminta rekan tersebut menunda ibadahnya demi mengejar deadline submission aplikasi", score: 0, review: "Mengesampingkan hak konstitusional beragama demi target temporal semata." },
+          { text: "Mengeluh secara terbuka di forum tim bahwa hal tersebut memperlambat laju progres kerja kelompok", score: 0, review: "Memicu intoleransi dan merusak keharmonisan kerja sama tim." }
+        ]
+      },
+      20: {
+        category: "💡 KUIS KILAT HUKUM CYBER",
+        title: "Mekanisme Judi Terselubung dalam Game",
+        scenario: "Sebuah game menyediakan fitur pertaruhan koin yang dapat diuangkan kembali menjadi uang rupiah asli secara acak. Fitur ini melanggar...",
+        article: "Pasal 28J ayat (2) & Pasal 27 ayat (2) UU ITE",
+        options: [
+          { text: "Hanya melanggar etika jika grafis permainannya tampak kurang realistis", score: 0, review: "Bukan soal visual; ini adalah masalah substansi hukum perjudian digital." },
+          { text: "Ketentuan pidana perjudian online menurut UU ITE serta ketertiban moral publik", score: 10, review: "Tepat sekali! Memfasilitasi perjudian digital dengan kedok video game adalah tindak pidana siber yang dilarang keras." },
+          { text: "Tidak melanggar apa pun asalkan pemainnya merasa terhibur", score: 0, review: "Keliru; hukum negara tetap mengikat ruang digital demi melindungi masyarakat dari kejahatan finansial." }
+        ]
+      },
+      21: {
+        category: "📖 WAWASAN KONSTITUSI",
+        title: "Bela Negara di Ranah Teknologi Game",
+        scenario: "Bagaimana wujud nyata keikutsertaan mahasiswa teknologi game dalam upaya pembelaan negara di era transformasi digital?",
+        article: "Pasal 27 ayat (3) & Pasal 30 ayat (1) UUD NRI 1945",
+        options: [
+          { text: "Menciptakan karya game edukatif yang mencerdaskan bangsa, mengamankan data siber kedaulatan negara, dan menangkal hoaks", score: 15, review: "Luar biasa! Bela negara tidak melulu angkat senjata, melainkan mendedikasikan keahlian profesi demi kedaulatan dan kemajuan bangsa." },
+          { text: "Melakukan serangan siber DDoS ke server game negara lain tanpa alasan", score: 0, review: "Tindakan kriminal peretasan yang merusak citra damai Indonesia di mata dunia internasional." },
+          { text: "Menolak belajar teknologi luar negeri dan membatasi diri dari pergaulan global", score: 0, review: "Isolasionisme sempit yang justru membuat bangsa tertinggal dalam sains dan teknologi." }
+        ]
+      },
+      22: {
+        category: "💬 DIALOG ETIKA BISNIS",
+        title: "Monetisasi Etis vs Pay-to-Win Eksploitatif",
+        scenario: "Penerbit game meminta Anda mengubah sistem game agar pemain yang membayar jutaan rupiah otomatis mengalahkan pemain lain tanpa butuh keahlian.",
+        article: "Sila ke-2 & ke-5 Pancasila (Keadilan Sosial)",
+        options: [
+          { text: "Menyetujuinya agar pemain yang tidak punya uang merasa frustrasi dan berhenti bermain", score: 0, review: "Eksploitatif dan merusak prinsip keadilan serta sportivitas kompetisi." },
+          { text: "Mengusulkan sistem monetisasi kosmetik yang adil dan transparan tanpa merusak integritas sportivitas permainan", score: 10, review: "Solusi cerdas dan beretika! Menjaga kelangsungan bisnis sekaligus menghargai kesetaraan dan keadilan pemain." },
+          { text: "Membuat game tersebut diam-diam mencuri pulsa ponsel pemain", score: 0, review: "Tindakan kejahatan siber pencurian yang dapat dipidana." }
+        ]
+      },
+      23: {
+        category: "💡 KUIS KILAT TATA HUKUM",
+        title: "Hierarki Peraturan Perundang-undangan",
+        scenario: "Menurut UU No. 12 Tahun 2011, produk hukum manakah yang menempati urutan hierarki tertinggi dalam tata hukum Indonesia?",
+        article: "Pasal 7 ayat (1) UU No. 12/2011",
+        options: [
+          { text: "Undang-Undang Dasar Negara Republik Indonesia Tahun 1945", score: 10, review: "Tepat! UUD NRI 1945 adalah hukum dasar tertulis tertinggi (Groundnorm) di Indonesia." },
+          { text: "Peraturan Rektor Perguruan Tinggi Negeri", score: 0, review: "Peraturan kampus berada jauh di bawah undang-undang dan peraturan menteri." },
+          { text: "Surat Keputusan Panitia Turnamen Game", score: 0, review: "Keputusan panitia lomba hanyalah aturan privat teknis kegiatan." }
+        ]
+      },
+      24: {
+        category: "💬 DIALOG KAMPUS",
+        title: "Transparansi Algoritma Matchmaking",
+        scenario: "Komunitas esports kampus mencurigai panitia memanipulasi bagan pertandingan turnamen game demi memenangkan tim sahabat dekat panitia.",
+        article: "Asas Akuntabilitas & Keadilan Berorganisasi",
+        options: [
+          { text: "Mengabaikan kecurigaan dan mengancam mendiskualifikasi tim yang memprotes", score: 0, review: "Sikap otoriter yang menghancurkan kepercayaan dan keadilan sportivitas." },
+          { text: "Membuka bagan pengacakan secara terbuka dan disaksikan bersama (live draw transparan)", score: 10, review: "Sangat profesional dan demokratis! Keterbukaan informasi membendung fitnah dan menjamin keadilan." },
+          { text: "Membatalkan seluruh turnamen agar panitia tidak perlu repot menjelaskan", score: 0, review: "Lari dari tanggung jawab dan merugikan semua peserta yang telah berlatih." }
+        ]
+      },
+      26: {
+        category: "💡 KUIS KILAT TATA NEGARA",
+        title: "Pemisahan Kekuasaan Pemerintahan",
+        scenario: "Lembaga negara pemegang kekuasaan membentuk undang-undang (legislatif) di tingkat pusat menurut UUD 1945 adalah...",
+        article: "Pasal 20 ayat (1) UUD NRI 1945",
+        options: [
+          { text: "Dewan Perwakilan Rakyat (DPR)", score: 10, review: "Benar! Pasal 20 ayat (1) menegaskan bahwa DPR memegang kekuasaan membentuk undang-undang." },
+          { text: "Mahkamah Konstitusi", score: 0, review: "Keliru; MK adalah lembaga yudikatif penguji undang-undang, bukan pembuat undang-undang." },
+          { text: "Dewan Pertimbangan Presiden", score: 0, review: "Keliru; Wantimpres bertugas memberi nasihat kepada Presiden, bukan legislasi." }
+        ]
+      },
+      27: {
+        category: "💬 DIALOG ETIKA AKADEMIK",
+        title: "Perlindungan Whistleblower Kecurangan",
+        scenario: "Seorang mahasiswa menyaksikan joki ujian game dev di kelasnya dan ragu melapor karena takut diintimidasi oleh pelaku yang bertubuh besar.",
+        article: "Pasal 28G ayat (1) & Perlindungan Saksi",
+        options: [
+          { text: "Menyarankan mahasiswa tersebut diam saja demi keselamatan pribadinya", score: 0, review: "Membiarkan kecurangan merusak nilai kejujuran dan merugikan seluruh mahasiswa yang jujur." },
+          { text: "Mendampingi melapor ke dewan etik fakultas melalui kanal pengaduan anonim yang terjamin kerahasiaannya", score: 10, review: "Langkah berani dan bijak! Menjunjung integritas sekaligus memastikan perlindungan rasa aman bagi saksi pelapor." },
+          { text: "Menyebarkan identitas saksi pelapor ke grup WhatsApp angkatan", score: 0, review: "Membahayakan keselamatan saksi dan melanggar kode etik kerahasiaan pengaduan." }
+        ]
+      },
+      28: {
+        category: "💡 KUIS KILAT KONSTITUSI",
+        title: "Batas Pelaksanaan Hak Asasi Manusia",
+        scenario: "Berdasarkan Pasal 28J ayat (2) UUD 1945, pembatasan hak asasi seseorang semata-mata hanya dapat ditetapkan dengan...",
+        article: "Pasal 28J ayat (2) UUD NRI 1945",
+        options: [
+          { text: "Undang-Undang, demi menjamin pengakuan serta penghormatan atas hak dan kebebasan orang lain", score: 10, review: "Tepat sekali! Hak asasi manusia tidak bersifat anarki mutlak; kebebasan kita dibatasi oleh hak asasi sesama warga." },
+          { text: "Perasaan suka atau tidak suka dari pimpinan organisasi setempat", score: 0, review: "Bukan; pembatasan hak warga negara tidak boleh didasarkan pada selera subjektif penguasa." },
+          { text: "Voting acak di media sosial yang dipimpin influencer", score: 0, review: "Keliru; instrumen pembatasan hak konstitusi wajib melalui undang-undang formal negara." }
+        ]
+      },
+      29: {
+        category: "💬 DIALOG INKLUSIVITAS",
+        title: "Kesetaraan Gender dalam Ekosistem Game",
+        scenario: "Dalam audisi tim riset game kampus, seorang mahasiswi ditolak hanya karena stereotip bahwa 'game adalah dunia laki-laki'.",
+        article: "Pasal 28I ayat (2) UUD NRI 1945",
+        options: [
+          { text: "Mendukung stereotip tersebut demi kepraktisan tim", score: 0, review: "Sikap seksis dan diskriminatif yang melanggar prinsip kesetaraan hak warga negara." },
+          { text: "Menegur panitia seleksi dan mewajibkan penilaian murni berbasis kompetensi, portofolio karya, dan dedikasi", score: 10, review: "Sangat adil! Setiap orang berhak bebas dari perlakuan diskriminatif atas dasar apa pun sesuai Pasal 28I ayat (2)." },
+          { text: "Membuat ruang studio terpisah dan melarang kolaborasi bersama", score: 0, review: "Segregasi yang tidak perlu dan justru memperdalam kesenjangan sosial." }
+        ]
+      },
+      31: {
+        category: "💡 KUIS KILAT HAKI",
+        title: "Pelanggaran Merek Dagang (Trademark)",
+        scenario: "Menggunakan logo dan nama merek terkenal milik studio game lain tanpa izin ke dalam judul game komersial buatan sendiri merupakan pelanggaran...",
+        article: "UU Merek dan Indikasi Geografis No. 20/2016",
+        options: [
+          { text: "Hak Merek, karena menyesatkan konsumen dan mendompleng reputasi dagang pihak lain", score: 10, review: "Tepat! Merek dagang melindungi identitas komersial agar konsumen tidak terkecoh barang tiruan." },
+          { text: "Bukan pelanggaran asalkan grafis gamenya diubah menjadi 2D piksel", score: 0, review: "Tetap merupakan pelanggaran merek jika menggunakan nama atau logo yang memiliki persamaan substansial." },
+          { text: "Pelanggaran kode etik kedokteran", score: 0, review: "Tidak relevan dengan ranah hukum kekayaan intelektual digital." }
+        ]
+      },
+      32: {
+        category: "💬 DIALOG HAK BERSERIKAT",
+        title: "Asosiasi Pengembang Game Mahasiswa",
+        scenario: "Pihak birokrasi kampus sempat melarang mahasiswa membentuk himpunan riset game independen dengan alasan kegiatan tersebut membuang waktu.",
+        article: "Pasal 28E ayat (3) UUD NRI 1945",
+        options: [
+          { text: "Membubarkan diri dan berhenti berinovasi di bidang game", score: 0, review: "Sikap pasrah yang mematikan potensi intelektual dan kemajuan generasi muda." },
+          { text: "Melakukan audiensi resmi dengan memaparkan landasan hak berserikat serta kontribusi nyata game dev bagi kemajuan kampus", score: 10, review: "Langkah diplomatik dan konstitusional yang berkelas! Mempertahankan hak berkumpul melalui argumentasi ilmiah." },
+          { text: "Melakukan aksi perusakan fasilitas kampus sebagai bentuk protes", score: 0, review: "Tindakan vandalisme melanggar hukum pidana dan mencoreng nama baik mahasiswa." }
+        ]
+      },
+      33: {
+        category: "⚖️ KASUS KONSTITUSIONAL 4",
+        title: "Fitur Loot Box Berbayar Tunai Target Anak Sekolah",
+        scenario: "Investor studio game Anda memaksa memasukkan mekanisme undian berbayar tunai acak (loot box) yang menyasar anak usia sekolah dasar untuk mendongkrak omzet.",
+        article: "Pasal 28B ayat (2) & UU Perlindungan Konsumen",
+        options: [
+          { text: "Menyetujuinya secepatnya demi bonus finansial pribadi yang melimpah", score: 0, review: "Mengabaikan etika dan mengeksploitasi anak untuk terbiasa dengan perilaku judi terselubung." },
+          { text: "Menyembunyikan probabilitas peluang agar anak-anak terus membeli koin secara berulang", score: 0, review: "Praktik dark pattern manipulatif yang melanggar hak transparansi konsumen." },
+          { text: "Menolak tegas sistem undian acak berbayar anak dan mengusulkan monetisasi kosmetik langsung yang transparan dan aman", score: 20, review: "Integritas luar biasa! Menyelamatkan generasi anak bangsa dari kecanduan transaksi manipulatif demi profit sesaat." }
+        ]
+      },
+      34: {
+        category: "💡 KUIS KILAT KENEGARAAN",
+        title: "Perbedaan Wewenang MK vs Mahkamah Agung",
+        scenario: "Lembaga peradilan manakah yang berwenang menguji peraturan di bawah undang-undang (seperti Peraturan Pemerintah) terhadap undang-undang?",
+        article: "Pasal 24A ayat (1) UUD NRI 1945",
+        options: [
+          { text: "Mahkamah Agung (MA)", score: 10, review: "Tepat! Mahkamah Agung berwenang menguji peraturan di bawah UU terhadap UU, sedangkan MK menguji UU terhadap UUD." },
+          { text: "Mahkamah Konstitusi (MK)", score: 0, review: "Keliru; wewenang MK adalah menguji Undang-Undang terhadap Undang-Undang Dasar (Pasal 24C ayat 1)." },
+          { text: "Komisi Yudisial (KY)", score: 0, review: "Keliru; KY adalah lembaga pengawas kehormatan dan perilaku hakim, bukan penguji peraturan." }
+        ]
+      },
+      35: {
+        category: "💬 DIALOG KESEHATAN MENTAL",
+        title: "Game untuk Terapi dan Edukasi Psikologis",
+        scenario: "Seorang dosen meragukan riset mahasiswa yang mengembangkan game untuk membantu pemulihan trauma anak-anak korban bencana alam.",
+        article: "Pasal 31 ayat (5) UUD NRI 1945",
+        options: [
+          { text: "Menyerah dan mengganti topik riset menjadi hal yang biasa saja", score: 0, review: "Membatasi potensi sains dan teknologi yang sesungguhnya dapat bermanfaat bagi masyarakat." },
+          { text: "Menunjukkan data uji klinis empiris bahwa media interaktif dapat memajukan ilmu pengetahuan dan memulihkan trauma kemanusiaan", score: 10, review: "Sangat inspiratif! Memajukan ilmu pengetahuan dan teknologi demi meningkatkan kesejahteraan umat manusia sesuai Pasal 31 ayat (5)." },
+          { text: "Menghina pandangan dosen tersebut di media sosial tanpa argumen ilmiah", score: 0, review: "Perilaku tidak terpuji yang melanggar etika civitas akademika." }
+        ]
+      },
+      36: {
+        category: "💡 KUIS KILAT KENEGARAAN",
+        title: "Lembaga Penyelenggara Pemilu",
+        scenario: "Berdasarkan Pasal 22E ayat (5) UUD 1945, pemilihan umum di Indonesia diselenggarakan oleh suatu komisi pemilihan umum yang bersifat...",
+        article: "Pasal 22E ayat (5) UUD NRI 1945",
+        options: [
+          { text: "Nasional, tetap, dan mandiri (independen)", score: 10, review: "Tepat sekali! Asas mandiri menjamin penyelenggara pemilu bebas dari intervensi kekuasaan mana pun." },
+          { text: "Bawahan langsung dari kementerian dalam negeri", score: 0, review: "Keliru; penyelenggara pemilu berstatus mandiri, bukan subordinat menteri eksekutif." },
+          { text: "Musiman dan dapat dibubarkan sewaktu-waktu oleh partai politik peserta pemilu", score: 0, review: "Keliru; KPU bersifat tetap dan berkesinambungan menjaga siklus demokrasi lima tahunan." }
+        ]
+      },
+      38: {
+        category: "💡 KUIS KILAT KETENAGAKERJAAN",
+        title: "Isu 'Crunch Time' Lembur Ekstrem di Game Studio",
+        scenario: "Sebuah studio game memaksa karyawannya bekerja 18 jam sehari tanpa uang lembur dan tanpa hari libur selama berbulan-bulan demi mengejar rilis. Hal ini melanggar...",
+        article: "Pasal 28D ayat (2) UUD NRI 1945 & UU Ketenagakerjaan",
+        options: [
+          { text: "Hak setiap orang untuk bekerja serta mendapat imbalan dan perlakuan yang adil dan layak dalam hubungan kerja", score: 10, review: "Tepat sekali! Pasal 28D ayat (2) melindungi hak tenaga kerja dari eksploitasi jam kerja ekstrem yang membahayakan kesehatan." },
+          { text: "Bukan pelanggaran karena membuat game memang harus menderita", score: 0, review: "Pemikiran industri yang toksik; profesionalisme harus dibarengi dengan perlindungan hak asasi pekerja." },
+          { text: "Hanya melanggar jika studio game tersebut berada di bawah kementerian pariwisata", score: 0, review: "Hukum ketenagakerjaan mengikat seluruh badan usaha di wilayah Republik Indonesia." }
+        ]
+      },
+      39: {
+        category: "💬 DIALOG ETIKA BEREKSPRESI",
+        title: "Kritik Sosial Lewat Cerita Video Game",
+        scenario: "Mahasiswa membuat game naratif yang mengkritik praktik suap pejabat korup. Ada pihak kampus yang menyarankan cerita tersebut disensor agar cari aman.",
+        article: "Pasal 28F UUD NRI 1945",
+        options: [
+          { text: "Menghapus seluruh muatan kritik sosial dan membuat game yang hampa makna", score: 0, review: "Ketakutan berlebihan yang membungkam pesan moral pencegahan korupsi." },
+          { text: "Mempertahankan karya dengan memastikan narasi berbasis fakta pencegahan korupsi dan bertujuan mencerdaskan moral publik", score: 10, review: "Sangat berani dan berintegritas! Media kreatif adalah sarana mulia untuk menyuarakan kebenaran dan melawan kejahatan korupsi." },
+          { text: "Mengubah karakter pejabat korup menjadi fitnah personal terhadap dosen tertentu", score: 0, review: "Salah kaprah; kritik sosial harus menyasar sistem, bukan menjadi sarana pencemaran nama baik individu." }
+        ]
+      },
+      40: {
+        category: "💡 KUIS KILAT HUKUM KONSTITUSI",
+        title: "Uji Materiil (Judicial Review) di MK",
+        scenario: "Jika terdapat ketentuan dalam sebuah Undang-Undang yang dinilai bertentangan dengan UUD 1945, lembaga yang berwenang membatalkannya adalah...",
+        article: "Pasal 24C ayat (1) UUD NRI 1945",
+        options: [
+          { text: "Mahkamah Konstitusi (MK)", score: 10, review: "Benar! MK adalah penjaga konstitusi (The Guardian of the Constitution) yang berwenang menguji UU terhadap UUD." },
+          { text: "Majelis Kehormatan Partai Politik", score: 0, review: "Keliru; partai politik tidak memiliki wewenang yudisial membatalkan undang-undang negara." },
+          { text: "Kejaksaan Agung Republik Indonesia", score: 0, review: "Keliru; Kejaksaan adalah lembaga penuntut umum di ranah pidana, bukan penguji konstitusionalitas UU." }
+        ]
+      },
+      41: {
+        category: "💬 DIALOG ETIKA ARTIFICIAL INTELLIGENCE",
+        title: "Penggunaan Generative AI dalam Pembuatan Game",
+        scenario: "Tim game dev menggunakan generator AI yang dilatih dari lukisan seniman lokal tanpa izin dan menjualnya sebagai karya orisinal 100%.",
+        article: "Pasal 28C ayat (1) & Hak Moral Seniman",
+        options: [
+          { text: "Mengklaimnya sebagai karya lukisan tangan sendiri demi gengsi", score: 0, review: "Ketidakjujuran intelektual yang mencederai integritas profesi developer." },
+          { text: "Transparan menyebutkan pemanfaatan bantuan AI serta menghormati hak cipta para seniman yang karyanya dijadikan referensi", score: 10, review: "Sikap jujur dan beradab! Adopsi teknologi mutakhir wajib diimbangi dengan transparansi dan etika HAKI yang luhur." },
+          { text: "Menghapus seluruh tanda tangan digital seniman agar jejaknya hilang", score: 0, review: "Tindakan manipulatif yang melanggar hak moral pencipta karya seni." }
+        ]
+      },
+      42: {
+        category: "⚖️ KASUS KONSTITUSIONAL 5",
+        title: "Penjualan Data Kontak Pemain kepada Pihak Ketiga",
+        scenario: "Sebuah perusahaan pinjaman online menawarkan dana sponsor bernilai ratusan juta rupiah asalkan studio Anda menyerahkan basis data nomor telepon para pemain game.",
+        article: "Pasal 28G ayat (1) & UU PDP No. 27/2022",
+        options: [
+          { text: "Menjual seluruh database kontak pemain secara diam-diam demi dana sponsor melimpah", score: 0, review: "Kejahatan kebocoran data dan pengkhianatan kepercayaan publik yang melanggar hukum berat." },
+          { text: "Menolak tegas penawaran sponsor tersebut dan memperketat sistem keamanan enkripsi data pribadi pengguna", score: 20, review: "Integritas kenegarawanan sejati! Menjunjung tinggi hak atas perlindungan diri pribadi, kehormatan, dan rahasia warga negara sesuai amanat konstitusi!" },
+          { text: "Menjual kontak pemain yang akunnya sudah tidak aktif selama satu bulan saja", score: 0, review: "Tetap merupakan tindak pidana penyalahgunaan data pribadi tanpa persetujuan sah pemilik data." }
+        ]
+      },
+      43: {
+        category: "💡 KUIS KILAT ASAS HUKUM",
+        title: "Asas Peradilan Indonesia",
+        scenario: "Prinsip peradilan yang dianut dalam sistem hukum Indonesia untuk menjamin keadilan yang efisien dan manusiawi adalah peradilan yang...",
+        article: "Pasal 24 ayat (2) UUD 1945 & UU Kehakiman",
+        options: [
+          { text: "Sederhana, cepat, dan biaya ringan", score: 10, review: "Tepat sekali! Asas ini menjamin agar pencari keadilan tidak terbebani oleh birokrasi berbelit dan biaya mahal." },
+          { text: "Rumit, lama, dan menghabiskan harta benda para pihak yang berperkara", score: 0, review: "Sangat keliru; itu adalah potret peradilan korup yang harus kita berantas bersama." },
+          { text: "Tertutup dan keputusannya dirahasiakan selamanya dari publik", score: 0, review: "Bertentangan dengan prinsip keterbukaan sidang demi akuntabilitas hukum." }
+        ]
+      },
+      44: {
+        category: "💬 DIALOG LITERASI DIGITAL",
+        title: "Melawan Kampanye Hitam dan Disinformasi",
+        scenario: "Menjelang pemilihan ketua organisasi mahasiswa, beredar pesan broadcast game kuis hoaks yang memfitnah salah satu calon kandidat.",
+        article: "Pasal 28F UUD 1945 & Sila ke-2 Pancasila",
+        options: [
+          { text: "Ikut membagikan pesan tersebut ke semua grup chat agar ramai", score: 0, review: "Menjadi penyebar kabar bohong adalah tindakan tidak bertanggung jawab yang merusak demokrasi." },
+          { text: "Melakukan verifikasi fakta independen dan mengedukasi rekan-rekan untuk tidak mudah termakan fitnah digital", score: 10, review: "Sikap cerdas seorang intelektual! Membentengi ruang publik dengan literasi informasi yang sehat dan bermartabat." },
+          { text: "Menyerang balik keluarga pembuat pesan dengan fitnah yang lebih kejam", score: 0, review: "Memperkeruh situasi dan melanggar hukum perlindungan kehormatan pribadi." }
+        ]
+      },
+      45: {
+        category: "📖 WAWASAN KONSTITUSI",
+        title: "Kemerdekaan Beragama dan Toleransi",
+        scenario: "Bagaimana jaminan konstitusional negara terhadap kemerdekaan beragama bagi setiap penduduk Indonesia?",
+        article: "Pasal 29 ayat (2) UUD NRI 1945",
+        options: [
+          { text: "Negara menjamin kemerdekaan tiap-tiap penduduk untuk memeluk agamanya masing-masing dan untuk beribadat menurut agamanya dan kepercayaannya itu", score: 15, review: "Tepat sekali! Pasal 29 ayat (2) adalah tonggak emas kerukunan dan jaminan hak beragama di Republik Indonesia." },
+          { text: "Negara hanya mengizinkan satu kepercayaan tunggal dan melarang perbedaan", score: 0, review: "Sangat bertentangan dengan karakter majemuk bangsa dan konsensus para pendiri negara." },
+          { text: "Kebebasan beribadah hanya berlaku bagi kelompok mayoritas di wilayah tertentu", score: 0, review: "Diskriminatif dan mencederai asas persatuan seluruh tumpah darah Indonesia." }
+        ]
+      },
+      46: {
+        category: "💡 KUIS KILAT ADVOKASI PUBLIK",
+        title: "Hak Gugat Warga Negara (Citizen Lawsuit)",
+        scenario: "Hak warga negara untuk mengajukan gugatan ke pengadilan atas kelalaian pemerintah dalam memenuhi hak publik (seperti penanganan polusi udara) disebut...",
+        article: "Prinsip Akses Keadilan Publik UUD 1945",
+        options: [
+          { text: "Citizen Lawsuit (Gugatan Warga Negara)", score: 10, review: "Benar! Mekanisme hukum ini membuktikan bahwa warga negara memiliki hak menuntut pemenuhan tanggung jawab negara atas hak asasi warganya." },
+          { text: "Kudeta terselubung", score: 0, review: "Keliru; gugatan warga negara adalah mekanisme hukum damai yang sah dan konstitusional." },
+          { text: "Boikot massal tanpa proses peradilan", score: 0, review: "Bukan; ini adalah gugatan hukum formal di meja hijau pengadilan negeri." }
+        ]
+      },
+      47: {
+        category: "💬 DIALOG KELESTARIAN LINGKUNGAN",
+        title: "Efisiensi Energi Server Game & Keadilan Ekologis",
+        scenario: "Studio game Anda merancang arsitektur server yang sangat boros listrik batu bara dan mengusulkan beralih ke pusat data ramah energi hijau.",
+        article: "Pasal 28H ayat (1) & Pasal 33 ayat (4) UUD 1945",
+        options: [
+          { text: "Menolaknya karena tidak peduli pada pemanasan global dan krisis iklim", score: 0, review: "Mengabaikan hak generasi mendatang untuk menikmati lingkungan hidup yang sehat." },
+          { text: "Mendukung transisi server ramah energi demi mewujudkan perekonomian nasional yang berwawasan lingkungan dan berkelanjutan", score: 10, review: "Pilihan visioner! Pasal 28H ayat (1) menegaskan hak setiap warga negara atas lingkungan hidup yang baik dan sehat." },
+          { text: "Membuang limbah perangkat keras elektronik langsung ke sungai dekat kampus", score: 0, review: "Tindakan pencemaran lingkungan berat yang melanggar hukum lingkungan hidup." }
+        ]
+      },
+      48: {
+        category: "💡 KUIS KILAT ASAS HUKUM PIDANA",
+        title: "Asas Legalitas (Nullum Delictum)",
+        scenario: "Asas yang menyatakan bahwa tiada suatu perbuatan dapat dihukum melainkan atas kekuatan aturan pidana dalam perundang-undangan yang telah ada sebelum perbuatan dilakukan adalah...",
+        article: "Pasal 1 ayat (1) KUHP & Pasal 28I ayat (1) UUD 1945",
+        options: [
+          { text: "Asas Legalitas", score: 10, review: "Tepat sekali! Asas ini melindungi warga negara dari kesewenang-wenangan aparat menghukum perbuatan yang belum ada aturan hukumnya." },
+          { text: "Asas Praduga Bersalah", score: 0, review: "Keliru; hukum Indonesia menganut asas praduga tak bersalah (presumption of innocence)." },
+          { text: "Asas Balas Dendam Pribadi", score: 0, review: "Sangat keliru; hukum pidana modern bertujuan menegakkan keadilan dan ketertiban, bukan pembalasan dendam pribadi." }
+        ]
+      },
+      49: {
+        category: "💬 DIALOG INTEGRITAS AKHIR",
+        title: "Langkah Terakhir Menuju Mahkamah",
+        scenario: "Tepat sebelum melangkah ke Petak 50, rekan mahasiswa bertanya: 'Apa modal terbesar seorang sarjana game dev saat terjun ke masyarakat kelak?'",
+        article: "Pancasila & UUD NRI 1945 Seutuhnya",
+        options: [
+          { text: "Kemampuan memanipulasi kode agar cepat kaya raya tanpa peduli hukum", score: 0, review: "Pemikiran sempit yang hanya akan menjerumuskan diri ke dalam jurang kehancuran moral." },
+          { text: "Integritas moral yang kokoh, ketaatan pada hukum, dan komitmen mendedikasikan teknologi demi kemajuan martabat bangsa", score: 10, review: "Sempurna! Inilah esensi hakiki Constitutional Choices: langkah kecil yang berbuah dampak besar bagi kejayaan Negara Kesatuan Republik Indonesia!" },
+          { text: "Sikap acuh tak acuh terhadap nasib bangsa dan sesama warga", score: 0, review: "Apatisme adalah musuh utama dari kemajuan peradaban demokrasi." }
+        ]
+      }
+    };
+
+    /* ==========================================================================
+       3. WEB AUDIO PROCEDURAL SYNTHESIZER
+       ========================================================================== */
+    let audioCtx = null;
+    let isMuted = false;
+    let musicInterval = null;
+    let currentMusicMode = null;
+
+    function initAudio() {
+      if (!audioCtx) {
+        audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+      }
+      if (audioCtx.state === 'suspended') {
+        audioCtx.resume();
+      }
+    }
+
+    function playNote(freq, type, duration, gainVal = 0.08) {
+      if (isMuted) return;
+      try {
+        initAudio();
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+        osc.type = type;
+        osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
+        gain.gain.setValueAtTime(gainVal, audioCtx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + duration);
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+        osc.start();
+        osc.stop(audioCtx.currentTime + duration);
+      } catch (e) {}
+    }
+
+    function playClickSound() { playNote(620, 'square', 0.06, 0.05); }
+    function playSuccessSound() {
+      playNote(523.25, 'triangle', 0.1, 0.1);
+      setTimeout(() => playNote(659.25, 'triangle', 0.15, 0.1), 80);
+      setTimeout(() => playNote(783.99, 'triangle', 0.25, 0.12), 160);
+    }
+    function playFailSound() {
+      playNote(220, 'sawtooth', 0.15, 0.12);
+      setTimeout(() => playNote(174.61, 'sawtooth', 0.3, 0.14), 120);
+    }
+
+    function startMenuMusic() {
+      if (musicInterval) clearInterval(musicInterval);
+      currentMusicMode = 'menu';
+      const chords = [
+        [261.63, 329.63, 392.00],
+        [220.00, 261.63, 329.63],
+        [174.61, 220.00, 261.63],
+        [196.00, 246.94, 293.66]
+      ];
+      let step = 0;
+      musicInterval = setInterval(() => {
+        if (isMuted || currentMusicMode !== 'menu') return;
+        const c = chords[step % chords.length];
+        playNote(c[0], 'sine', 0.45, 0.04);
+        setTimeout(() => playNote(c[1], 'sine', 0.45, 0.03), 160);
+        setTimeout(() => playNote(c[2], 'sine', 0.45, 0.03), 320);
+        step++;
+      }, 700);
+    }
+
+    function startBoardMusic() {
+      if (musicInterval) clearInterval(musicInterval);
+      currentMusicMode = 'board';
+      const bass = [130.81, 146.83, 164.81, 174.61, 196.00, 164.81, 146.83, 130.81];
+      let step = 0;
+      musicInterval = setInterval(() => {
+        if (isMuted || currentMusicMode !== 'board') return;
+        playNote(bass[step % bass.length], 'triangle', 0.2, 0.07);
+        if (step % 2 === 0) playNote(523.25, 'sine', 0.08, 0.02);
+        step++;
+      }, 350);
+    }
+
+    function toggleAudio() {
+      isMuted = !isMuted;
+      document.getElementById('sound-icon').textContent = isMuted ? '🔇' : '🎵';
+      document.getElementById('sound-text').textContent = isMuted ? 'MUSIK: MATI' : 'MUSIK: NYALA';
+      if (!isMuted) {
+        initAudio();
+        if (currentMusicMode === 'board') startBoardMusic();
+        else startMenuMusic();
+      }
+    }
+
+    /* ==========================================================================
+       4. STATE PERMAINAN & MEKANIK
+       ========================================================================== */
+    let gameMode = 'solo';
+    let difficulty = 'medium';
+    let activePlayerIndex = 0;
+    let players = [];
+    let isDiceRolling = false;
+
+    function createPlayer(id, name, defaultChar) {
+      return {
+        id,
+        name,
+        character: defaultChar,
+        tile: 1,
+        score: 0,
+        mood: "calm",
+        milestonesAchieved: []
+      };
+    }
+
+    function setGameDifficulty(diff) {
+      playClickSound();
+      difficulty = diff;
+      document.querySelectorAll('.diff-chip').forEach(el => el.classList.remove('active-diff'));
+      event.target.classList.add('active-diff');
+      document.getElementById('diff-selected-label').textContent = diff.toUpperCase();
+    }
+
+    /* PILIH KARAKTER */
+    let selectingForP1 = true;
+    let selectedCharP1 = CHARACTERS_DATA[1]; // Default Kirana
+    let selectedCharP2 = CHARACTERS_DATA[0]; // Default Arya
+
+    function startCharacterSelection(mode) {
+      playClickSound();
+      initAudio();
+      gameMode = mode;
+      selectingForP1 = true;
+      document.getElementById('main-menu-view').style.display = 'none';
+      document.getElementById('char-select-view').style.display = 'flex';
+      renderCharacterCards();
+    }
+
+    function renderCharacterCards() {
+      const container = document.getElementById('char-cards-container');
+      container.innerHTML = '';
+      const turnBadge = document.getElementById('char-selection-turn-badge');
+      turnBadge.textContent = selectingForP1 ? "PILIH KARAKTER (PEMAIN 1)" : "PILIH KARAKTER (PEMAIN 2)";
+
+      const activeTarget = selectingForP1 ? selectedCharP1 : selectedCharP2;
+
+      CHARACTERS_DATA.forEach(char => {
+        const card = document.createElement('div');
+        card.className = `char-card ${activeTarget.id === char.id ? 'selected' : ''}`;
+        card.onclick = () => {
+          playClickSound();
+          if (selectingForP1) selectedCharP1 = char;
+          else selectedCharP2 = char;
+          renderCharacterCards();
+        };
+
+        const avatarBox = document.createElement('div');
+        avatarBox.className = 'char-avatar-box';
+        if (char.customImage) {
+          avatarBox.innerHTML = `<img src="${char.customImage}" alt="${char.name}">`;
+        } else {
+          avatarBox.innerHTML = char.svg;
+        }
+
+        card.appendChild(avatarBox);
+        card.innerHTML += `
+          <h3 style="font-size: 1rem; font-weight: 900; color: #0f172a;">${char.name}</h3>
+          <span style="font-size: 0.72rem; font-weight: 800; color: ${char.themeColor};">${char.role}</span>
+          <p style="font-size: 0.68rem; color: #64748b; margin-top: 4px; line-height: 1.3;">${char.desc}</p>
+        `;
+        container.appendChild(card);
+      });
+    }
+
+    function confirmCharacterSelection() {
+      playClickSound();
+      if (gameMode === 'duel' && selectingForP1) {
+        selectingForP1 = false;
+        renderCharacterCards();
+        return;
+      }
+
+      players = [
+        createPlayer('p1', selectedCharP1.name, selectedCharP1)
+      ];
+      if (gameMode === 'duel') {
+        players.push(createPlayer('p2', selectedCharP2.name, selectedCharP2));
+      }
+
+      activePlayerIndex = 0;
+      document.getElementById('char-select-view').style.display = 'none';
+      document.getElementById('game-layout').style.display = 'grid';
+
+      buildBoard50();
+      updateHUD();
+      updateDiceThemeColor();
+      startBoardMusic();
+    }
+
+    function backToMainMenu() {
+      playClickSound();
+      document.getElementById('game-layout').style.display = 'none';
+      document.getElementById('char-select-view').style.display = 'none';
+      document.getElementById('main-menu-view').style.display = 'flex';
+      startMenuMusic();
+    }
+
+    function updateDiceThemeColor() {
+      const p = players[activePlayerIndex];
+      const dice = document.getElementById('dice-cube');
+      if (p && p.character && dice) {
+        dice.style.color = p.character.themeColor;
+        dice.style.boxShadow = `inset -4px -4px 0 #cbd5e1, 0 6px 0 ${p.character.accentColor || '#0f172a'}`;
+      }
+    }
+
+    /* PAPAN 50 PETAK */
+    function buildBoard50() {
+      const grid = document.getElementById('board-grid-50');
+      grid.innerHTML = '';
+
+      for (let i = 1; i <= 50; i++) {
+        const tile = document.createElement('div');
+        tile.className = `board-tile ${getTileStyleClass(i)}`;
+        tile.id = `tile-${i}`;
+
+        const numSpan = document.createElement('span');
+        numSpan.className = 't-num';
+        numSpan.textContent = i;
+
+        const icoSpan = document.createElement('span');
+        icoSpan.className = 't-ico';
+        icoSpan.textContent = getTileIcon(i);
+
+        const lblSpan = document.createElement('span');
+        lblSpan.className = 't-lbl';
+        lblSpan.textContent = getTileLabel(i);
+
+        tile.appendChild(numSpan);
+        tile.appendChild(icoSpan);
+        tile.appendChild(lblSpan);
+
+        grid.appendChild(tile);
+      }
+      renderPawns();
+    }
+
+    function getTileStyleClass(num) {
+      if (num === 1) return 'tile-style-start';
+      if (num === 50) return 'tile-style-finish';
+      if (num === 25) return 'tile-style-gate25';
+      if ([4, 12, 19, 33, 42].includes(num)) return 'tile-style-case';
+      if ([6, 21, 45].includes(num)) return 'tile-style-knowledge';
+      if ([8, 16, 37].includes(num)) return 'tile-style-trap';
+      if ([14, 30].includes(num)) return 'tile-style-boost';
+      if ([3, 7, 10, 13, 17, 20, 23, 26, 28, 31, 34, 36, 38, 40, 43, 46, 48].includes(num)) return 'tile-style-quiz';
+      return 'tile-style-dialog';
+    }
+
+    function getTileIcon(num) {
+      if (num === 1) return '🚩';
+      if (num === 50) return '🏛️';
+      if (num === 25) return '⚡';
+      if ([4, 12, 19, 33, 42].includes(num)) return '⚖️';
+      if ([6, 21, 45].includes(num)) return '📖';
+      if ([8, 16, 37].includes(num)) return '⚠️';
+      if ([14, 30].includes(num)) return '🚀';
+      if ([3, 7, 10, 13, 17, 20, 23, 26, 28, 31, 34, 36, 38, 40, 43, 46, 48].includes(num)) return '💡';
+      return '💬';
+    }
+
+    function getTileLabel(num) {
+      if (num === 1) return 'START';
+      if (num === 50) return 'MAHKAMAH';
+      if (num === 25) return 'SIDANG 25';
+      if ([4, 12, 19, 33, 42].includes(num)) return 'Kasus ' + ([4,12,19,33,42].indexOf(num)+1);
+      if ([8, 16, 37].includes(num)) return 'Jebakan';
+      if ([14, 30].includes(num)) return 'Dorongan';
+      if ([6, 21, 45].includes(num)) return 'Wawasan';
+      if ([3, 7, 10, 13, 17, 20, 23, 26, 28, 31, 34, 36, 38, 40, 43, 46, 48].includes(num)) return 'Kuis Kilat';
+      return 'Dialog';
+    }
+
+    function renderPawns() {
+      document.querySelectorAll('.mock-pawn-standee').forEach(el => el.remove());
+
+      players.forEach((p, idx) => {
+        const tile = document.getElementById(`tile-${p.tile}`);
+        if (!tile) return;
+
+        const standee = document.createElement('div');
+        standee.className = `mock-pawn-standee ${idx === 1 ? 'pawn-p2' : ''}`;
+        if (players.length > 1 && players[0].tile === players[1].tile) {
+          standee.classList.add(idx === 0 ? 'pawn-offset-l' : 'pawn-offset-r');
+        }
+
+        if (p.tile === 25 || p.tile === 50 || [8, 16, 37].includes(p.tile)) {
+          standee.classList.add('pawn-nervous-tremble');
+          const sweat = document.createElement('div');
+          sweat.className = 'pawn-sweat-emote';
+          sweat.textContent = '💧';
+          standee.appendChild(sweat);
+        }
+
+        const tag = document.createElement('span');
+        tag.className = 'pawn-tag-bubble';
+        tag.textContent = p.name;
+
+        const box = document.createElement('div');
+        box.className = 'pawn-avatar-box';
+        if (p.character.customImage) {
+          box.innerHTML = `<img src="${p.character.customImage}">`;
+        } else {
+          box.innerHTML = p.character.svg;
+        }
+
+        standee.appendChild(tag);
+        standee.appendChild(box);
+        tile.appendChild(standee);
+      });
+    }
+
+    /* LEMPAR DADU */
+    function handleRollDice() {
+      if (isDiceRolling) return;
+      isDiceRolling = true;
+      initAudio();
+      playClickSound();
+
+      const btn = document.getElementById('btn-roll-dice');
+      btn.disabled = true;
+
+      const diceCube = document.getElementById('dice-cube');
+      let rolls = 0;
+      const rollInterval = setInterval(() => {
+        const rand = Math.floor(Math.random() * 6) + 1;
+        diceCube.textContent = rand;
+        playNote(400 + rand * 30, 'square', 0.04, 0.03);
+        rolls++;
+        if (rolls >= 10) {
+          clearInterval(rollInterval);
+          const finalRoll = Math.floor(Math.random() * 6) + 1;
+          diceCube.textContent = finalRoll;
+          finishDiceRoll(finalRoll);
+        }
+      }, 70);
+    }
+
+    function finishDiceRoll(steps) {
+      const p = players[activePlayerIndex];
+      let newTile = p.tile + steps;
+
+      if (p.tile < 25 && newTile >= 25) {
+        newTile = 25;
+      }
+      if (newTile > 50) newTile = 50;
+
+      p.tile = newTile;
+      renderPawns();
+      updateHUD();
+
+      addLog(`${p.name} melangkah ${steps} petak menuju Petak ${p.tile}.`);
+
+      setTimeout(() => {
+        handleTileLanded(p.tile);
+      }, 400);
+    }
+
+    function updateHUD() {
+      document.getElementById('hud-turn-banner').textContent = `GILIRAN: ${players[activePlayerIndex].name.toUpperCase()}`;
+      document.getElementById('badge-game-mode-display').textContent = gameMode === 'duel' ? 'MODE DUEL' : 'MODE SOLO';
+
+      const p1 = players[0];
+      document.getElementById('hud-name-p1').textContent = p1.name;
+      document.getElementById('hud-role-p1').textContent = p1.character.role;
+      document.getElementById('hud-score-p1').textContent = `${p1.score} PTS`;
+      document.getElementById('hud-avatar-p1').innerHTML = p1.character.customImage ? `<img src="${p1.character.customImage}">` : p1.character.svg;
+
+      if (gameMode === 'duel' && players[1]) {
+        const p2 = players[1];
+        document.getElementById('hud-card-p2').style.display = 'block';
+        document.getElementById('hud-name-p2').textContent = p2.name;
+        document.getElementById('hud-role-p2').textContent = p2.character.role;
+        document.getElementById('hud-score-p2').textContent = `${p2.score} PTS`;
+        document.getElementById('hud-avatar-p2').innerHTML = p2.character.customImage ? `<img src="${p2.character.customImage}">` : p2.character.svg;
+      } else {
+        document.getElementById('hud-card-p2').style.display = 'none';
+      }
+
+      updateDiceThemeColor();
+    }
+
+    function addLog(msg) {
+      const box = document.getElementById('gameplay-log-box');
+      box.innerHTML = `• ${msg}<br>` + box.innerHTML;
+    }
+
+    /* SISTEM CEK MILESTONE 25 POIN */
+    function checkMilestoneReward(p, oldScore, newScore) {
+      const milestones = [25, 50, 75, 100, 125];
+      for (const m of milestones) {
+        if (oldScore < m && newScore >= m && !p.milestonesAchieved.includes(m)) {
+          p.milestonesAchieved.push(m);
+          showMilestoneStory(p, m);
+          return true;
+        }
+      }
+      return false;
+    }
+
+    function showMilestoneStory(p, milestoneVal) {
+      const charMilestoneData = (CHARACTER_MILESTONES[p.character.id] || CHARACTER_MILESTONES["char-2"])[milestoneVal] || {
+        narrative: "\"Setiap langkah integritas yang kutempuh membuktikan bahwa nilai Pancasila adalah kompas sejati dalam hidup berdampingan.\"",
+        principle: "Pengamalan nilai konstitusional dalam kehidupan sehari-hari."
+      };
+
+      document.getElementById('milestone-badge-text').textContent = `${milestoneVal} POIN INTEGRITAS`;
+      document.getElementById('milestone-char-avatar').innerHTML = p.character.customImage ? `<img src="${p.character.customImage}">` : p.character.svg;
+      document.getElementById('milestone-char-name').textContent = p.name;
+      document.getElementById('milestone-char-role').textContent = p.character.role;
+      document.getElementById('milestone-narrative-text').textContent = charMilestoneData.narrative;
+      document.getElementById('milestone-principle-text').textContent = `Prinsip: ${charMilestoneData.principle}`;
+      document.getElementById('milestone-story-modal').style.display = 'flex';
+      playSuccessSound();
+    }
+
+    function closeMilestoneModal() {
+      playClickSound();
+      document.getElementById('milestone-story-modal').style.display = 'none';
+      nextTurn();
+    }
+
+    /* ==========================================================================
+       5. PENANGANAN EVENT PETAK
+       ========================================================================== */
+    function handleTileLanded(tileNum) {
+      const p = players[activePlayerIndex];
+
+      // Petak 25: Ujian Maraton
+      if (tileNum === 25) {
+        openExam25Modal();
+        return;
+      }
+
+      // Petak 50: Sidang Mahkamah Konstitusi
+      if (tileNum === 50) {
+        openFinalCourtModal();
+        return;
+      }
+
+      // Petak Pendorong
+      if (tileNum === 14 || tileNum === 30) {
+        playSuccessSound();
+        const oldScore = p.score;
+        p.score += 15;
+        p.tile = Math.min(50, p.tile + 2);
+        addLog(`🚀 Semangat Gotong Royong! Poin +15 dan maju 2 petak ke Petak ${p.tile}.`);
+        renderPawns();
+        updateHUD();
+        if (!checkMilestoneReward(p, oldScore, p.score)) {
+          nextTurn();
+        }
+        return;
+      }
+
+      // Petak Jebakan
+      if ([8, 16, 37].includes(tileNum)) {
+        playFailSound();
+        let penaltySteps = 2;
+        if (difficulty === 'easy') penaltySteps = 1;
+        else if (difficulty === 'medium') penaltySteps = 2;
+        else if (difficulty === 'hard') penaltySteps = 3;
+        else if (difficulty === 'extreme') penaltySteps = 4;
+
+        p.tile = Math.max(1, p.tile - penaltySteps);
+        addLog(`⚠️ Jebakan Pelanggaran Etika! Mundur ${penaltySteps} petak ke Petak ${p.tile}.`);
+        renderPawns();
+        updateHUD();
+        nextTurn();
+        return;
+      }
+
+      // Petak Soal Bervariasi
+      openTileEventModal(tileNum);
+    }
+
+    function nextTurn() {
+      isDiceRolling = false;
+      document.getElementById('btn-roll-dice').disabled = false;
+      if (gameMode === 'duel') {
+        activePlayerIndex = activePlayerIndex === 0 ? 1 : 0;
+      }
+      updateHUD();
+    }
+
+    /* MODAL EVENT BIASA DENGAN DATABASE LENGKAP */
+    let currentTileLanded = 1;
+    function openTileEventModal(tileNum) {
+      currentTileLanded = tileNum;
+      const data = TILE_CHALLENGES[tileNum] || {
+        category: "💬 DIALOG REFLEKSI MAHASISWA",
+        title: `Tantangan Etika Petak ${tileNum}`,
+        scenario: `Dalam dinamika kampus di petak ${tileNum}, seorang mahasiswa berdiskusi mengenai ketaatan hukum dan integritas digital.`,
+        article: "UUD NRI 1945 & Kode Etik Akademik",
+        options: [
+          { text: "Mengedepankan kejujuran, musyawarah, dan ketaatan pada regulasi", score: 10, review: "Pilihan tepat yang mencerminkan kedewasaan berpikir konstitusional." },
+          { text: "Mengabaikan etika demi kepraktisan jangka pendek", score: 0, review: "Kurang bijak dan berpotensi merugikan lingkungan bersama." },
+          { text: "Menyerahkan seluruh keputusan pada dosen tanpa inisiatif tim", score: 0, review: "Sikap pasif yang tidak mengasah kemandirian warga negara." }
+        ]
+      };
+
+      document.getElementById('modal-event-tag').textContent = data.category;
+      document.getElementById('modal-tile-badge').textContent = `PETAK ${tileNum}`;
+      document.getElementById('modal-event-title').textContent = data.title;
+      document.getElementById('modal-event-desc').textContent = data.scenario;
+
+      const optsContainer = document.getElementById('modal-options-container');
+      optsContainer.innerHTML = '';
+      document.getElementById('modal-feedback-box').style.display = 'none';
+      document.getElementById('btn-modal-action-confirm').style.display = 'none';
+
+      data.options.forEach((opt, idx) => {
+        const btn = document.createElement('button');
+        btn.className = 'btn-quiz-option';
+        const keyLetter = ['A', 'B', 'C'][idx];
+        btn.innerHTML = `<span class="option-key-badge">${keyLetter}</span> <span>${opt.text}</span>`;
+        btn.onclick = () => handleTileAnswerSelection(opt, data);
+        optsContainer.appendChild(btn);
+      });
+
+      document.getElementById('event-action-modal').style.display = 'flex';
+    }
+
+    let milestonePending = false;
+    let pendingMilestoneVal = 0;
+
+    function handleTileAnswerSelection(selectedOpt, data) {
+      const p = players[activePlayerIndex];
+      const feedback = document.getElementById('modal-feedback-box');
+      document.querySelectorAll('.btn-quiz-option').forEach(b => b.disabled = true);
+
+      const oldScore = p.score;
+
+      if (selectedOpt.score > 0) {
+        playSuccessSound();
+        p.score += selectedOpt.score;
+        feedback.style.background = '#dcfce7';
+        feedback.style.borderColor = '#16a34a';
+        feedback.innerHTML = `<strong>✅ TEPAT! (+${selectedOpt.score} PTS)</strong><br>${selectedOpt.review}<br><small style="color:#166534;">Dasar: ${data.article}</small>`;
+
+        // Cek apakah menyentuh kelipatan 25
+        const milestones = [25, 50, 75, 100, 125];
+        milestonePending = false;
+        for (const m of milestones) {
+          if (oldScore < m && p.score >= m && !p.milestonesAchieved.includes(m)) {
+            p.milestonesAchieved.push(m);
+            milestonePending = true;
+            pendingMilestoneVal = m;
+            break;
+          }
+        }
+      } else {
+        playFailSound();
+        feedback.style.background = '#fee2e2';
+        feedback.style.borderColor = '#dc2626';
+
+        // Penyesuaian sanksi kasus konstitusi berdasarkan tingkat kesulitan
+        if ([4, 12, 19, 33, 42].includes(currentTileLanded)) {
+          if (difficulty === 'easy') {
+            feedback.innerHTML = `<strong>🚨 PELANGGARAN KONSTITUSI (0 PTS)</strong><br>${selectedOpt.review}<br><strong style="color:#15803d;">🛡️ Mode Easy: Tetap berada di Petak ${p.tile}. Terus pelajari nilai konstitusi!</strong>`;
+          } else if (difficulty === 'medium') {
+            p.tile = Math.max(1, currentTileLanded - 2);
+            renderPawns();
+            feedback.innerHTML = `<strong>🚨 PELANGGARAN KONSTITUSI (0 PTS)</strong><br>${selectedOpt.review}<br><strong style="color:#b91c1c;">Sanksi (Mode Medium): Mundur 2 langkah ke Petak ${p.tile}.</strong>`;
+          } else if (difficulty === 'hard') {
+            p.tile = Math.max(1, currentTileLanded - 5);
+            renderPawns();
+            feedback.innerHTML = `<strong>🚨 PELANGGARAN KONSTITUSI (0 PTS)</strong><br>${selectedOpt.review}<br><strong style="color:#b91c1c;">Sanksi (Mode Hard): Mundur 5 langkah ke Petak ${p.tile}.</strong>`;
+          } else {
+            p.tile = 1;
+            renderPawns();
+            feedback.innerHTML = `<strong>🚨 PELANGGARAN KONSTITUSI (0 PTS)</strong><br>${selectedOpt.review}<br><strong style="color:#b91c1c;">Sanksi (Mode Extreme): Bidak dikembalikan ke Petak 1 (START)!</strong>`;
+          }
+        } else {
+          feedback.innerHTML = `<strong>❌ KURANG TEPAT (0 PTS)</strong><br>${selectedOpt.review}`;
+        }
+      }
+
+      feedback.style.display = 'block';
+      document.getElementById('btn-modal-action-confirm').style.display = 'inline-flex';
+      updateHUD();
+    }
+
+    function closeEventActionModal() {
+      playClickSound();
+      document.getElementById('event-action-modal').style.display = 'none';
+
+      if (milestonePending) {
+        const p = players[activePlayerIndex];
+        showMilestoneStory(p, pendingMilestoneVal);
+        milestonePending = false;
+      } else {
+        nextTurn();
+      }
+    }
+
+    /* UJIAN PETAK 25 (MARATON 5 SOAL) */
+    let exam25Index = 0;
+    const EXAM25_QUESTIONS = [
+      {
+        q: "Apa landasan konstitusional hak setiap warga negara untuk berserikat, berkumpul, dan mengeluarkan pendapat secara damai?",
+        options: [
+          { text: "Pasal 28E ayat (3) UUD 1945", correct: true },
+          { text: "Pasal 33 ayat (1) UUD 1945", correct: false },
+          { text: "Pasal 30 ayat (2) UUD 1945", correct: false }
+        ]
+      },
+      {
+        q: "Menurut sistem klasifikasi game Indonesia (IGRS), apa tujuan utama penetapan batas usia pemain?",
+        options: [
+          { text: "Membatasi keuntungan finansial developer asing semata", correct: false },
+          { text: "Melindungi tumbuh kembang psikologis anak sesuai Pasal 28B ayat (2) UUD 1945", correct: true },
+          { text: "Menghapus seluruh genre game kompetitif dari peredaran nasional", correct: false }
+        ]
+      },
+      {
+        q: "Jika sebuah karya game indie dibajak dan dijual tanpa izin di forum online, hak konstitusional apa yang dilanggar?",
+        options: [
+          { text: "Hak atas perlindungan karya cipta dan pengembangan diri (Pasal 28C ayat 1 & UU Hak Cipta)", correct: true },
+          { text: "Hak membela negara dalam militer (Pasal 27 ayat 3)", correct: false },
+          { text: "Hak mengajukan kasasi pidana militer", correct: false }
+        ]
+      },
+      {
+        q: "Bolehkah studio game menyisipkan mekanisme perjudian terselubung (loot box berbayar tunai acak)?",
+        options: [
+          { text: "Boleh asalkan rating umur dinaikkan menjadi 18+", correct: false },
+          { text: "Dilarang keras, karena bertentangan dengan Pasal 28J ayat (2) dan larangan judi UU ITE", correct: true },
+          { text: "Boleh jika server game ditempatkan di luar yurisdiksi Indonesia", correct: false }
+        ]
+      },
+      {
+        q: "Apakah penyediaan opsi aksesibilitas bagi penyandang disabilitas dalam game merupakan wujud nilai konstitusi?",
+        options: [
+          { text: "Bukan, karena industri game adalah murni bisnis hiburan tanpa etika", correct: false },
+          { text: "Benar, mencerminkan pemenuhan hak atas kemudahan dan kesetaraan (Pasal 28H ayat 2 & Sila ke-5)", correct: true },
+          { text: "Dilarang karena dianggap merusak estetika asli visual game", correct: false }
+        ]
+      }
+    ];
+
+    function openExam25Modal() {
+      exam25Index = 0;
+      const penaltyEl = document.getElementById('exam25-penalty-text');
+      if (penaltyEl) {
+        if (difficulty === 'easy') {
+          penaltyEl.textContent = '🛡️ Mode Easy: Jika salah menjawab, hanya mundur 1 langkah ke Petak 24.';
+          penaltyEl.style.color = '#15803d';
+        } else if (difficulty === 'medium') {
+          penaltyEl.textContent = '🛡️ Mode Medium: Jika salah menjawab, mundur 4 langkah ke Petak 21.';
+          penaltyEl.style.color = '#b45309';
+        } else if (difficulty === 'hard') {
+          penaltyEl.textContent = '⚠️ Mode Hard: Jika salah menjawab, mundur ke Petak 14.';
+          penaltyEl.style.color = '#dc2626';
+        } else {
+          penaltyEl.textContent = '🔥 Mode Extreme: Jika salah 1 soal, langsung kembali ke Petak 1 (START)!';
+          penaltyEl.style.color = '#991b1b';
+        }
+      }
+      document.getElementById('exam25-modal').style.display = 'flex';
+      renderExam25Question();
+    }
+
+    function renderExam25Question() {
+      const qData = EXAM25_QUESTIONS[exam25Index];
+      document.getElementById('exam25-step-badge').textContent = `SOAL ${exam25Index + 1} DARI 5`;
+      document.getElementById('exam25-question-text').textContent = qData.q;
+
+      const box = document.getElementById('exam25-options-box');
+      box.innerHTML = '';
+
+      qData.options.forEach((opt, idx) => {
+        const btn = document.createElement('button');
+        btn.className = 'btn-quiz-option';
+        const key = ['A', 'B', 'C'][idx];
+        btn.innerHTML = `<span class="option-key-badge">${key}</span> <span>${opt.text}</span>`;
+        btn.onclick = () => handleExam25Answer(opt.correct);
+        box.appendChild(btn);
+      });
+    }
+
+    function handleExam25Answer(isCorrect) {
+      const p = players[activePlayerIndex];
+      if (!isCorrect) {
+        playFailSound();
+        document.getElementById('exam25-modal').style.display = 'none';
+
+        let penaltyTile = 1;
+        let logMsg = '';
+        if (difficulty === 'easy') {
+          penaltyTile = 24; // Hanya mundur 1 langkah!
+          logMsg = `⚠️ Belum lulus Sidang 25 (Mode Easy). ${p.name} hanya mundur 1 langkah ke Petak 24.`;
+        } else if (difficulty === 'medium') {
+          penaltyTile = 21; // Hanya mundur 4 langkah ke Petak 21!
+          logMsg = `⚠️ Belum lulus Sidang 25 (Mode Medium). ${p.name} mundur ke Petak 21.`;
+        } else if (difficulty === 'hard') {
+          penaltyTile = 14;
+          logMsg = `⚠️ Belum lulus Sidang 25 (Mode Hard). ${p.name} mundur ke Petak 14.`;
+        } else {
+          penaltyTile = 1;
+          logMsg = `❌ Gagal di Sidang 25 (Mode Extreme)! ${p.name} dikembalikan ke Petak 1 (START).`;
+        }
+
+        p.tile = penaltyTile;
+        renderPawns();
+        updateHUD();
+        addLog(logMsg);
+        nextTurn();
+        return;
+      }
+
+      playSuccessSound();
+      exam25Index++;
+      if (exam25Index < EXAM25_QUESTIONS.length) {
+        renderExam25Question();
+      } else {
+        document.getElementById('exam25-modal').style.display = 'none';
+        const oldScore = p.score;
+        p.score += 50;
+        addLog(`🎉 LULUS SIDANG MARATON PETAK 25! +50 Poin Integritas.`);
+        updateHUD();
+        showStoryBreakthrough(p);
+      }
+    }
+
+    function showStoryBreakthrough(p) {
+      const story = CHARACTER_STORY_25[p.character.id] || CHARACTER_STORY_25["char-2"];
+      document.getElementById('story-modal-title').textContent = `✨ TITIK BALIK: ${p.character.name.toUpperCase()}`;
+      document.getElementById('story-char-avatar').innerHTML = p.character.customImage ? `<img src="${p.character.customImage}">` : p.character.svg;
+      document.getElementById('story-char-name').textContent = p.character.name;
+      document.getElementById('story-char-role').textContent = p.character.role;
+      document.getElementById('story-monologue-text').textContent = story.monologue;
+      document.getElementById('story-meaning-text').textContent = story.meaning;
+      document.getElementById('story-breakthrough-modal').style.display = 'flex';
+    }
+
+    function closeStoryModal() {
+      playClickSound();
+      document.getElementById('story-breakthrough-modal').style.display = 'none';
+      nextTurn();
+    }
+
+    /* SIDANG MAHKAMAH KONSTITUSI 50 (10 SOAL) */
+    let courtIndex = 0;
+    const FINAL_COURT_QUESTIONS = [
+      { q: "Sila ke-4 Pancasila mengajarkan bahwa pengambilan keputusan kenegaraan harus mengutamakan...", options: [{ text: "Musyawarah untuk mufakat", correct: true }, { text: "Pemungutan suara kilat tanpa dialog", correct: false }, { text: "Kehendak kelompok mayoritas mutlak", correct: false }] },
+      { q: "Berdasarkan Pasal 1 ayat (2) UUD 1945 hasil amandemen, kedaulatan berada di tangan rakyat dan dilaksanakan...", options: [{ text: "Menurut Undang-Undang Dasar", correct: true }, { text: "Sepenuhnya oleh Majelis Permusyawaratan Rakyat", correct: false }, { text: "Oleh Presiden selaku pemegang kekuasaan tunggal", correct: false }] },
+      { q: "Prinsip Indonesia sebagai 'Negara Hukum' ditegaskan secara eksplisit pada...", options: [{ text: "Pasal 1 ayat (3) UUD NRI 1945", correct: true }, { text: "Pasal 33 ayat (2) UUD NRI 1945", correct: false }, { text: "Pasal 29 ayat (1) UUD NRI 1945", correct: false }] },
+      { q: "Hak asasi manusia di Indonesia dapat dibatasi semata-mata dengan undang-undang untuk menjamin pengakuan hak orang lain, sesuai klausul...", options: [{ text: "Pasal 28J ayat (2) UUD 1945", correct: true }, { text: "Pasal 27 ayat (1) UUD 1945", correct: false }, { text: "Pasal 31 ayat (3) UUD 1945", correct: false }] },
+      { q: "Asas Pemilihan Umum di Indonesia menurut Pasal 22E UUD 1945 adalah...", options: [{ text: "Langsung, Umum, Bebas, Rahasia, Jujur, dan Adil (Luber Jurdil)", correct: true }, { text: "Tergantung keputusan dewan kehormatan partai politik", correct: false }, { text: "Terbuka, Terbatas, dan Berjenjang", correct: false }] },
+      { q: "Salah satu wewenang konstitusional Mahkamah Konstitusi menurut Pasal 24C ayat (1) adalah menguji...", options: [{ text: "Undang-Undang terhadap Undang-Undang Dasar", correct: true }, { text: "Peraturan Daerah terhadap Peraturan Menteri", correct: false }, { text: "Surat Edaran Rektor terhadap KUHP", correct: false }] },
+      { q: "Hak untuk hidup, hak untuk tidak disiksa, dan hak kemerdekaan pikiran adalah hak yang tidak dapat dikurangi dalam keadaan apa pun (non-derogable rights), tercantum pada...", options: [{ text: "Pasal 28I ayat (1) UUD 1945", correct: true }, { text: "Pasal 28C ayat (2) UUD 1945", correct: false }, { text: "Pasal 34 ayat (1) UUD 1945", correct: false }] },
+      { q: "[SUKAR] Berdasarkan Pasal 37 ayat (5) UUD 1945, materi apa yang secara mutlak TIDAK DAPAT dilakukan perubahan?", options: [{ text: "Bentuk Negara Kesatuan Republik Indonesia (NKRI)", correct: true }, { text: "Jumlah anggota Dewan Perwakilan Rakyat", correct: false }, { text: "Sistem mata uang rupiah", correct: false }] },
+      { q: "[SUKAR] Putusan pengujian undang-undang oleh Mahkamah Konstitusi bersifat 'erga omnes' dan 'final and binding', yang berarti...", options: [{ text: "Mengikat seluruh warga dan lembaga negara serta langsung berkekuatan hukum tetap tanpa upaya banding", correct: true }, { text: "Hanya berlaku bagi pemohon yang mengajukan gugatan", correct: false }, { text: "Dapat dibatalkan oleh menteri yang bersangkutan", correct: false }] },
+      { q: "[SUKAR] Satu-satunya kewajiban Mahkamah Konstitusi menurut Pasal 24C ayat (2) adalah memutus pendapat DPR mengenai...", options: [{ text: "Dugaan pelanggaran hukum berat atau pengkhianatan oleh Presiden dan/atau Wakil Presiden", correct: true }, { text: "Rancangan Anggaran Pendapatan dan Belanja Negara (RAPBN)", correct: false }, { text: "Penetapan duta besar negara sahabat", correct: false }] }
+    ];
+
+    function openFinalCourtModal() {
+      courtIndex = 0;
+      const penaltyEl = document.getElementById('final-court-penalty-text');
+      if (penaltyEl) {
+        if (difficulty === 'easy') {
+          penaltyEl.textContent = '⚖️ Ujian Terakhir: 10 Soal. Mode Easy: Jika salah 1 soal, hanya mundur 3 langkah ke Petak 47!';
+          penaltyEl.style.color = '#15803d';
+          penaltyEl.style.background = '#dcfce7';
+          penaltyEl.style.borderColor = '#16a34a';
+        } else if (difficulty === 'medium') {
+          penaltyEl.textContent = '⚖️ Ujian Terakhir: 10 Soal. Mode Medium: Jika salah 1 soal, mundur 6 langkah ke Petak 44.';
+          penaltyEl.style.color = '#9a3412';
+          penaltyEl.style.background = '#ffedd5';
+          penaltyEl.style.borderColor = '#ea580c';
+        } else if (difficulty === 'hard') {
+          penaltyEl.textContent = '⚖️ Ujian Terakhir: 10 Soal. Mode Hard: Jika salah 1 soal, mundur 12 langkah ke Petak 38.';
+          penaltyEl.style.color = '#991b1b';
+          penaltyEl.style.background = '#fee2e2';
+          penaltyEl.style.borderColor = '#ef4444';
+        } else {
+          penaltyEl.textContent = '⚖️ Ujian Terakhir: 10 Soal. Mode Extreme: Salah 1 soal = Sanksi Mundur 20 Langkah ke Petak 30!';
+          penaltyEl.style.color = '#991b1b';
+          penaltyEl.style.background = '#fee2e2';
+          penaltyEl.style.borderColor = '#ef4444';
+        }
+      }
+      document.getElementById('final-court-modal').style.display = 'flex';
+      renderFinalCourtQuestion();
+    }
+
+    function renderFinalCourtQuestion() {
+      const qData = FINAL_COURT_QUESTIONS[courtIndex];
+      document.getElementById('court-step-badge').textContent = `SOAL ${courtIndex + 1} DARI 10`;
+      document.getElementById('court-question-text').textContent = qData.q;
+
+      const box = document.getElementById('court-options-box');
+      box.innerHTML = '';
+
+      qData.options.forEach((opt, idx) => {
+        const btn = document.createElement('button');
+        btn.className = 'btn-quiz-option';
+        const key = ['A', 'B', 'C'][idx];
+        btn.innerHTML = `<span class="option-key-badge">${key}</span> <span>${opt.text}</span>`;
+        btn.onclick = () => handleFinalCourtAnswer(opt.correct);
+        box.appendChild(btn);
+      });
+    }
+
+    function handleFinalCourtAnswer(isCorrect) {
+      const p = players[activePlayerIndex];
+      if (!isCorrect) {
+        playFailSound();
+        document.getElementById('final-court-modal').style.display = 'none';
+
+        let penaltyTile = 30;
+        let logMsg = '';
+        if (difficulty === 'easy') {
+          penaltyTile = 47; // Hanya mundur 3 langkah ke Petak 47!
+          logMsg = `⚠️ Belum lulus Sidang Mahkamah (Mode Easy). ${p.name} hanya mundur 3 langkah ke Petak 47.`;
+        } else if (difficulty === 'medium') {
+          penaltyTile = 44; // Hanya mundur 6 langkah ke Petak 44!
+          logMsg = `⚠️ Belum lulus Sidang Mahkamah (Mode Medium). ${p.name} mundur 6 langkah ke Petak 44.`;
+        } else if (difficulty === 'hard') {
+          penaltyTile = 38;
+          logMsg = `⚠️ Belum lulus Sidang Mahkamah (Mode Hard). ${p.name} mundur 12 langkah ke Petak 38.`;
+        } else {
+          penaltyTile = 30;
+          logMsg = `❌ Sidang Pleno Mahkamah Ditolak! ${p.name} mundur 20 langkah ke Petak 30.`;
+        }
+
+        p.tile = penaltyTile;
+        renderPawns();
+        updateHUD();
+        addLog(logMsg);
+        nextTurn();
+        return;
+      }
+
+      playSuccessSound();
+      courtIndex++;
+      if (courtIndex < FINAL_COURT_QUESTIONS.length) {
+        renderFinalCourtQuestion();
+      } else {
+        document.getElementById('final-court-modal').style.display = 'none';
+        p.score += 80;
+        addLog(`🏛️ KELULUSAN PARIPURNA! ${p.name} lulus Sidang Mahkamah Konstitusi!`);
+        openPersonalCertificate(p);
+      }
+    }
+
+    /* SERTIFIKAT KELULUSAN */
+    function openPersonalCertificate(p) {
+      const certData = CHARACTER_CERTIFICATES[p.character.id] || CHARACTER_CERTIFICATES["char-2"];
+
+      const avatarBox = document.getElementById('cert-char-avatar');
+      if (p.character.customImage) {
+        avatarBox.innerHTML = `<img src="${p.character.customImage}">`;
+      } else {
+        avatarBox.innerHTML = p.character.svg;
+      }
+
+      document.getElementById('cert-recipient-name').textContent = p.name;
+      document.getElementById('cert-recipient-role').textContent = p.character.role;
+      document.getElementById('cert-body-narrative').textContent = certData.narrative;
+      document.getElementById('cert-stat-score').textContent = `${p.score} PTS`;
+      document.getElementById('cert-stat-diff').textContent = difficulty.toUpperCase();
+      document.getElementById('cert-stat-grade').textContent = certData.grade;
+
+      const dateStr = new Date().toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' });
+      document.getElementById('cert-date-text').textContent = `Surabaya, ${dateStr}`;
+
+      document.getElementById('certificate-modal').style.display = 'flex';
+    }
+
+    function generateCertificateCanvas() {
+      return new Promise((resolve) => {
+        const p = players[activePlayerIndex] || players[0];
+        const certData = CHARACTER_CERTIFICATES[p.character.id] || CHARACTER_CERTIFICATES["char-2"];
+
+        const canvas = document.createElement('canvas');
+        canvas.width = 1200;
+        canvas.height = 800;
+        const ctx = canvas.getContext('2d');
+
+        // Background putih & bingkai ganda
+        ctx.fillStyle = '#ffffff';
+        ctx.fillRect(0, 0, 1200, 800);
+
+        ctx.strokeStyle = '#0f172a';
+        ctx.lineWidth = 8;
+        ctx.strokeRect(20, 20, 1160, 760);
+
+        ctx.strokeStyle = '#cbd5e1';
+        ctx.lineWidth = 2;
+        ctx.strokeRect(32, 32, 1136, 736);
+
+        // Header Tag Badge
+        const tagText = 'PIAGAM KELULUSAN KONSTITUSIONAL';
+        ctx.font = 'bold 15px "Plus Jakarta Sans", sans-serif';
+        const tagW = ctx.measureText(tagText).width + 36;
+        const tagH = 34;
+        const tagX = (1200 - tagW) / 2;
+        const tagY = 55;
+
+        ctx.fillStyle = '#fef08a';
+        ctx.strokeStyle = '#0f172a';
+        ctx.lineWidth = 3;
+        ctx.beginPath();
+        ctx.roundRect(tagX, tagY, tagW, tagH, 8);
+        ctx.fill();
+        ctx.stroke();
+
+        ctx.fillStyle = '#78350f';
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+        ctx.fillText(tagText, 1200 / 2, tagY + tagH / 2);
+
+        // Judul Utama & Subjudul
+        ctx.font = '900 42px "Impact", "Trebuchet MS", sans-serif';
+        ctx.fillStyle = '#0f172a';
+        ctx.fillText('SERTIFIKAT PENGHARGAAN', 1200 / 2, 135);
+
+        ctx.font = '700 16px "Plus Jakarta Sans", sans-serif';
+        ctx.fillStyle = '#64748b';
+        ctx.fillText('Constitutional Choices — Langkah Kecil, Dampak Besar untuk Negara', 1200 / 2, 168);
+
+        // Garis pemisah
+        ctx.fillStyle = '#0f172a';
+        ctx.fillRect(60, 190, 1080, 4);
+
+        // Kotak Penerima
+        ctx.fillStyle = '#f8fafc';
+        ctx.strokeStyle = '#0f172a';
+        ctx.lineWidth = 3;
+        ctx.beginPath();
+        ctx.roundRect(60, 215, 1080, 120, 12);
+        ctx.fill();
+        ctx.stroke();
+
+        ctx.textAlign = 'left';
+        ctx.fillStyle = '#64748b';
+        ctx.font = '800 14px "Plus Jakarta Sans", sans-serif';
+        ctx.fillText('DIBERIKAN DENGAN HORMAT KEPADA:', 190, 248);
+
+        ctx.fillStyle = '#0f172a';
+        ctx.font = '900 36px "Plus Jakarta Sans", sans-serif';
+        ctx.fillText(p.name, 190, 288);
+
+        ctx.fillStyle = p.character.themeColor || '#0284c7';
+        ctx.font = '800 18px "Plus Jakarta Sans", sans-serif';
+        ctx.fillText(p.character.role, 190, 318);
+
+        // Narasi Kelulusan Karakter
+        ctx.fillStyle = '#1e293b';
+        ctx.font = '600 17px "Plus Jakarta Sans", sans-serif';
+        const words = certData.narrative.split(' ');
+        let line = '';
+        let textY = 390;
+        for (let n = 0; n < words.length; n++) {
+          const testLine = line + words[n] + ' ';
+          if (ctx.measureText(testLine).width > 1040 && n > 0) {
+            ctx.fillText(line, 80, textY);
+            line = words[n] + ' ';
+            textY += 28;
+          } else {
+            line = testLine;
+          }
+        }
+        ctx.fillText(line, 80, textY);
+
+        ctx.strokeStyle = '#fbbf24';
+        ctx.lineWidth = 5;
+        ctx.beginPath();
+        ctx.moveTo(60, 360);
+        ctx.lineTo(60, 455);
+        ctx.stroke();
+
+        // 3 Kotak Statistik
+        const stats = [
+          { label: 'SKOR INTEGRITAS', val: `${p.score} PTS` },
+          { label: 'TINGKAT KESULITAN', val: difficulty.toUpperCase() },
+          { label: 'PREDIKAT AKHIR', val: certData.grade }
+        ];
+        const statBoxW = 340;
+        const statBoxH = 68;
+        stats.forEach((s, i) => {
+          const bx = 60 + i * (statBoxW + 30);
+          const by = 485;
+          ctx.fillStyle = '#f1f5f9';
+          ctx.strokeStyle = '#0f172a';
+          ctx.lineWidth = 2;
+          ctx.beginPath();
+          ctx.roundRect(bx, by, statBoxW, statBoxH, 10);
+          ctx.fill();
+          ctx.stroke();
+
+          ctx.textAlign = 'center';
+          ctx.fillStyle = '#64748b';
+          ctx.font = '800 13px "Plus Jakarta Sans", sans-serif';
+          ctx.fillText(s.label, bx + statBoxW / 2, by + 26);
+
+          // Penyesuaian ukuran teks dinamis agar predikat panjang tidak keluar kotak
+          let fontSize = 20;
+          ctx.font = `900 ${fontSize}px "Plus Jakarta Sans", sans-serif`;
+          while (ctx.measureText(s.val).width > (statBoxW - 20) && fontSize > 11) {
+            fontSize -= 1;
+            ctx.font = `900 ${fontSize}px "Plus Jakarta Sans", sans-serif`;
+          }
+          ctx.fillStyle = '#0f172a';
+          ctx.fillText(s.val, bx + statBoxW / 2, by + 54);
+        });
+
+        // Garis Pembatas Bawah
+        ctx.strokeStyle = '#cbd5e1';
+        ctx.lineWidth = 2;
+        ctx.beginPath();
+        ctx.setLineDash([6, 6]);
+        ctx.moveTo(60, 580);
+        ctx.lineTo(1140, 580);
+        ctx.stroke();
+        ctx.setLineDash([]);
+
+        // Footer Kiri: Tanggal
+        ctx.textAlign = 'left';
+        ctx.fillStyle = '#0f172a';
+        ctx.font = '800 17px "Plus Jakarta Sans", sans-serif';
+        const dateStr = new Date().toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' });
+        ctx.fillText(`Surabaya, ${dateStr}`, 60, 630);
+        ctx.fillStyle = '#64748b';
+        ctx.font = '700 14px "Plus Jakarta Sans", sans-serif';
+        ctx.fillText('Tanggal Kelulusan Sidang Mahkamah', 60, 655);
+
+        // Footer Tengah: Cap TERVERIFIKASI
+        ctx.save();
+        ctx.translate(600, 642);
+        ctx.rotate(-4 * Math.PI / 180);
+        ctx.strokeStyle = '#10b981';
+        ctx.lineWidth = 3.5;
+        ctx.beginPath();
+        ctx.roundRect(-85, -22, 170, 44, 8);
+        ctx.stroke();
+
+        ctx.fillStyle = '#10b981';
+        ctx.font = '900 20px "Plus Jakarta Sans", sans-serif';
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+        ctx.fillText('TERVERIFIKASI', 0, 0);
+        ctx.restore();
+
+        // Footer Kanan: Tanda Tangan Pengembang
+        ctx.textAlign = 'right';
+        ctx.fillStyle = '#0f172a';
+        ctx.font = '900 18px "Plus Jakarta Sans", sans-serif';
+        ctx.fillText('Nahl Sanktera Jagad', 1140, 630);
+        ctx.fillStyle = '#64748b';
+        ctx.font = '700 14px "Plus Jakarta Sans", sans-serif';
+        ctx.fillText('Pengembang Game (NRP: 5226600078)', 1140, 655);
+
+        // Gambar Avatar Karakter
+        const drawAvatarBox = (imgEl) => {
+          ctx.fillStyle = '#bae6fd';
+          ctx.strokeStyle = '#0f172a';
+          ctx.lineWidth = 3;
+          ctx.beginPath();
+          ctx.roundRect(80, 230, 85, 90, 10);
+          ctx.fill();
+          ctx.stroke();
+
+          if (imgEl) {
+            try {
+              ctx.save();
+              ctx.beginPath();
+              ctx.roundRect(82, 232, 81, 86, 8);
+              ctx.clip();
+              ctx.imageSmoothingEnabled = false;
+              ctx.drawImage(imgEl, 87, 233, 72, 84);
+              ctx.restore();
+            } catch(e) {
+              console.warn('Gagal merender avatar:', e);
+            }
+          }
+          resolve(canvas);
+        };
+
+        if (p.character.customImage) {
+          const img = new Image();
+          img.crossOrigin = 'anonymous';
+          img.onload = () => drawAvatarBox(img);
+          img.onerror = () => drawAvatarBox(null);
+          img.src = p.character.customImage;
+        } else if (p.character.svg) {
+          let cleanSvg = p.character.svg;
+          if (!cleanSvg.includes('xmlns=')) {
+            cleanSvg = cleanSvg.replace('<svg', '<svg xmlns="http://www.w3.org/2000/svg"');
+          }
+          cleanSvg = cleanSvg.replace(/width="[^"]*"/, 'width="128"').replace(/height="[^"]*"/, 'height="152"');
+          
+          // Menggunakan Data URI dengan encodeURIComponent agar 100% kompatibel di HTML5 Canvas
+          const svgDataUri = 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(cleanSvg);
+          const img = new Image();
+          img.onload = () => drawAvatarBox(img);
+          img.onerror = () => {
+            // Fallback blob jika data URI dibatasi browser
+            try {
+              const svgBlob = new Blob([cleanSvg], { type: 'image/svg+xml;charset=utf-8' });
+              const url = URL.createObjectURL(svgBlob);
+              const blobImg = new Image();
+              blobImg.onload = () => {
+                drawAvatarBox(blobImg);
+                URL.revokeObjectURL(url);
+              };
+              blobImg.onerror = () => {
+                drawAvatarBox(null);
+                URL.revokeObjectURL(url);
+              };
+              blobImg.src = url;
+            } catch(err) {
+              drawAvatarBox(null);
+            }
+          };
+          img.src = svgDataUri;
+        } else {
+          drawAvatarBox(null);
+        }
+      });
+    }
+
+    function buildPDFBinary(canvas) {
+      const jpegDataUrl = canvas.toDataURL('image/jpeg', 0.95);
+      const base64 = jpegDataUrl.split(',')[1];
+      const binaryString = atob(base64);
+      const imgLen = binaryString.length;
+      const imgBytes = new Uint8Array(imgLen);
+      for (let i = 0; i < imgLen; i++) {
+        imgBytes[i] = binaryString.charCodeAt(i);
+      }
+
+      const pWidth = 842;
+      const pHeight = 595;
+      const contentStream = `q\n${pWidth} 0 0 ${pHeight} 0 0 cm\n/Img1 Do\nQ\n`;
+
+      const parts = [];
+      const offsets = [];
+      let currentOffset = 0;
+
+      function pushText(str) {
+        const enc = new TextEncoder().encode(str);
+        parts.push(enc);
+        currentOffset += enc.length;
+      }
+      function pushBytes(uint8) {
+        parts.push(uint8);
+        currentOffset += uint8.length;
+      }
+
+      pushText('%PDF-1.4\n');
+
+      offsets[1] = currentOffset;
+      pushText('1 0 obj\n<< /Type /Catalog /Pages 2 0 R >>\nendobj\n');
+
+      offsets[2] = currentOffset;
+      pushText('2 0 obj\n<< /Type /Pages /Kids [3 0 R] /Count 1 >>\nendobj\n');
+
+      offsets[3] = currentOffset;
+      pushText(`3 0 obj\n<< /Type /Page /Parent 2 0 R /MediaBox [0 0 ${pWidth} ${pHeight}] /Contents 4 0 R /Resources << /XObject << /Img1 5 0 R >> >> >>\nendobj\n`);
+
+      offsets[4] = currentOffset;
+      pushText(`4 0 obj\n<< /Length ${contentStream.length} >>\nstream\n${contentStream}\nendstream\nendobj\n`);
+
+      offsets[5] = currentOffset;
+      pushText(`5 0 obj\n<< /Type /XObject /Subtype /Image /Width ${canvas.width} /Height ${canvas.height} /ColorSpace /DeviceRGB /BitsPerComponent 8 /Filter /DCTDecode /Length ${imgLen} >>\nstream\n`);
+      pushBytes(imgBytes);
+      pushText('\nendstream\nendobj\n');
+
+      const xrefOffset = currentOffset;
+      pushText('xref\n0 6\n0000000000 65535 f \n');
+      for (let i = 1; i <= 5; i++) {
+        pushText(String(offsets[i]).padStart(10, '0') + ' 00000 n \n');
+      }
+
+      pushText(`trailer\n<< /Size 6 /Root 1 0 R >>\nstartxref\n${xrefOffset}\n%%EOF\n`);
+      return new Blob(parts, { type: 'application/pdf' });
+    }
+
+    async function downloadCertificatePDF() {
+      playClickSound();
+      const p = players[activePlayerIndex] || players[0];
+      const canvas = await generateCertificateCanvas();
+      const pdfBlob = buildPDFBinary(canvas);
+      const url = URL.createObjectURL(pdfBlob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `Sertifikat_${p.name}_Constitutional_Choices.pdf`;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      setTimeout(() => URL.revokeObjectURL(url), 1500);
+    }
+
+    async function downloadCertificateImage() {
+      playClickSound();
+      const p = players[activePlayerIndex] || players[0];
+      const canvas = await generateCertificateCanvas();
+      canvas.toBlob((blob) => {
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = `Sertifikat_${p.name}_Constitutional_Choices.png`;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        setTimeout(() => URL.revokeObjectURL(url), 1500);
+      }, 'image/png');
+    }
+
+    function printCertificate() {
+      window.print();
+    }
+
+    function closeCertificateModal() {
+      playClickSound();
+      document.getElementById('certificate-modal').style.display = 'none';
+      backToMainMenu();
+    }
+
+    /* MODAL PENDUKUNG */
+    function openInstructionsModal() { playClickSound(); document.getElementById('instructions-modal').style.display = 'flex'; }
+    function openAboutModal() { playClickSound(); document.getElementById('about-modal').style.display = 'flex'; }
+    function openCreditModal() { playClickSound(); document.getElementById('credit-modal').style.display = 'flex'; }
+    function closeModal(id) { playClickSound(); document.getElementById(id).style.display = 'none'; }
+    function requestExitGame() { playClickSound(); document.getElementById('exit-modal').style.display = 'flex'; }
+    function confirmExitGame() {
+      playClickSound();
+      if (musicInterval) clearInterval(musicInterval);
+      document.getElementById('exit-modal').style.display = 'none';
+      if (navigator.app && navigator.app.exitApp) { navigator.app.exitApp(); return; }
+      try { window.open('', '_self', ''); window.close(); } catch(e) {}
+      document.getElementById('app-exit-screen').style.display = 'flex';
+    }
+
+    /* CUSTOM UPLOAD LISTENER */
+    document.getElementById('custom-char-upload').addEventListener('change', function(e) {
+      const file = e.target.files[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = function(evt) {
+        const target = selectingForP1 ? selectedCharP1 : selectedCharP2;
+        target.customImage = evt.target.result;
+        renderCharacterCards();
+      };
+      reader.readAsDataURL(file);
+    });
+
+    window.addEventListener('load', () => {
+      document.getElementById('diorama-actor-kirana').innerHTML = CHARACTERS_DATA[1].svg;
+      document.getElementById('diorama-actor-arya').innerHTML = CHARACTERS_DATA[0].svg;
+      startMenuMusic();
+    });
+  </script>
+</body>
+</html>
